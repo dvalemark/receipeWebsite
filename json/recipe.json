@@ -1,0 +1,87 @@
+[
+    {
+        "id": 1,
+        "name": "Pannkakor",
+        "people": 4,
+        "instructions": [
+            "Knäck äggen", 
+            "Blanda i hälften av mjölet", 
+            "Tillsätt mjölken",
+            "Blanda i resten av mjölet",
+            "Stek i en uppvärmd stekpanna",
+            "Avnjut med tillbehör, t.ex frukt, sylt eller grädde!"
+        ],
+        "ingredients":
+        [
+         {
+             "name":"ägg",
+             "units": 4,
+             "measuringUnit": "st",
+             "unitEquivalentInGrams": 240
+        },
+        {
+            "name": "mjölk",
+            "units": 6,
+            "measuringUnit": "dl",
+            "unitEquivalentInGrams":600
+        },
+        {
+            "name":"Mjöl",
+            "units":8,
+            "measuringUnit":"dl",
+            "unitEquivalentInGrams":400
+        },
+        {
+            "name":"smör",
+            "units":50,
+            "measuringUnit":"g",
+            "unitEquivalentInGrams": 50
+        }
+
+        ],
+        "category": "efterrätt",
+        "urlToImage": " "
+
+    },
+    {
+        "id": 2,
+        "name": "köttgryta",
+        "people": 4,
+        "instructions": [
+            "Stek löken och köttet", 
+            "Häll på vatten och tillsätt fond", 
+            "Krydda efter behag!"
+        ],
+        "ingredients":
+        [
+         {
+             "name":"lök",
+             "units": 1,
+             "measuringUnit": "st",
+             "unitEquivalentInGrams": 40
+        },
+        {
+            "name": "högrev",
+            "units": 300,
+            "measuringUnit": "g",
+            "unitEquivalentInGrams":300
+        },
+        {
+            "name":"köttfond",
+            "units":2,
+            "measuringUnit":"msk",
+            "unitEquivalentInGrams":20
+        },
+        {
+            "name":"vatten",
+            "units":500,
+            "measuringUnit":"ml",
+            "unitEquivalentInGrams": 500
+        }
+
+        ],
+        "category": "huvudrätt",
+        "urlToImage": " "
+    }
+
+]
