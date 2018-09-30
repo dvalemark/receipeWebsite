@@ -30,7 +30,7 @@ module.exports = class Routes {
         res.json(result);
       }
     ); */
-    this.app.get(
+    /* this.app.get(
       '/autocomplete-recipe-name/:startOfName',
       (req, res) => {
         let value = req.params.startOfName.toLowerCase();
@@ -47,7 +47,7 @@ module.exports = class Routes {
         );
         res.json(result);
       }
-    );
+    ); */
 
         this.app.get(
           '/recipes/:partOfRecipeName',
@@ -68,15 +68,30 @@ module.exports = class Routes {
             res.json(recipes);
           }
         );
+
+        this.app.get(
+          '/recipes/:category',
+          async (req, res) =>{
+            let valCategory = req.params.category.toLowerCase();
+            let categories = require('../json/recipe.json') || [];
+            
+            categories = categories.filter((recipe) =>{
+              if(recipe.category.toLowerCase().includes(valCategory)){
+              return recipe.name.toLowerCase();
+              }
+            })
+            res.json(recipe)
+          }
+        );
       
 
-    this.app.get(
+    /* this.app.get(
       '/recipe-by-name/:name', 
       async (req, res) => {
         let recipe = await Recipe.readFromFile(req.params.name)
         res.json(recipe);
       }
-    );
+    ); */
 
     this.app.post(
       '/recipe', 
