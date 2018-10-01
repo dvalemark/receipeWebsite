@@ -2,8 +2,6 @@
 $('#search-button').click(() => {
     let searchValue = $('#search-value').val();
     getRecipes(searchValue);
-
-
 })
 
 $('#search-value').keyup(function () {
@@ -124,37 +122,45 @@ function findingNutrition(ingredient) {
         getNutrition(ing.name);
     }
     )
+    displayingNutrition();
 }
 
 function getNutrition(ingredient) {
     console.log(ingredient);
     $.get('http://localhost:3000/ingredients/' + ingredient, (data) => {
         console.log(data);
-        displayingNutrition(data);
-
+        //displayingNutrition(data);
+        calculationNutrition(data);
     });
 }
 
 function calculationNutrition(nutrition){
-
-}
-
-function displayingNutrition(nutrition) {
-    console.log("displaying nutrition");
-    console.log(nutrition.Namn);
-    let display = $('<section></section>');
-    display.addClass('nutrition');
-    $("#nutritionSection").append(display);
-
-    let nutritionUlList = $('<ul></ul>');
-    display.append(nutritionUlList);
-
-
-    let nutritionLi = $('<li></li>');
     let kolesterol = nutrition.Naringsvarden.Naringsvarde.find((namn) => namn.Namn.toLowerCase().includes("kolesterol"));
     let energi = nutrition.Naringsvarden.Naringsvarde.find((namn) => namn.Namn.toLowerCase().includes("energi"));
     let kolhydrat = nutrition.Naringsvarden.Naringsvarde.find((namn) => namn.Namn.toLowerCase().includes("kolhydrat"));
-    nutritionLi.text(nutrition.Namn + ' ' + kolesterol.Varde + ' ' +energi.Varde + ' '+ kolhydrat.Varde);
-    nutritionUlList.append(nutritionLi);
+    console.log(kolhydrat.Varde);
+    displayCarbohydrates(kolhydrat.Varde);
+    displayCholesterol(kolesterol.Varde);
+    displayEnergy(energi.Varde);
+}
+
+function displayCarbohydrates(carb){
+    let prevSum =$('#sumKolhydrater').text();
+    let sum = parseFloat(prevSum) + parseFloat(carb);
+    $('#sumKolhydrater').text(sum);
+}
+function displayCholesterol(chol){
+    let prevSum =$('#sumKolesterol').text();
+    let sum = parseFloat(prevSum) + parseFloat(chol);
+    $('#sumKolesterol').text(sum);
+}
+function displayEnergy(ener){
+    let prevSum =$('#sumEnergi').text();
+    let sum = parseFloat(prevSum) + parseFloat(ener);
+    $('#sumEnergi').text(sum);
+}
+
+function displayingNutrition() {
+    console.log("displaying nutrition");
 
 }
