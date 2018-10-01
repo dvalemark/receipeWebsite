@@ -49,7 +49,23 @@ function listAc(recipe) {
     $('#resultAc').append(`<li class="list-group-item">${recipe.name}</li> `);
 }
 
-//filter
+//FILTER///////////////////////////////////////////////////
+$("#kategorier").click(function (event) {
+    var target = $(event.target);
+    if (target.is("a")) {
+        console.log(target.text())
+        filterCategories(target.text());
+    }
+});
+
+
+function filterCategories(category){
+    console.log(category);
+    $.get('http://localhost:3000/recipes-by-category/' +category, (data) => {
+        $('#search-result').empty();
+        data.forEach(listRecipes);
+    });
+}
 
 
 //click on results from search

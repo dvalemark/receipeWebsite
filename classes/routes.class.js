@@ -69,7 +69,7 @@ module.exports = class Routes {
 
     //filter category
     this.app.get(
-      '/recipes/:category',
+      '/recipes-by-category/:category',
       async (req, res) => {
         let valCategory = req.params.category.toLowerCase();
         let categories = require('../json/recipe.json') || [];
@@ -79,7 +79,7 @@ module.exports = class Routes {
             return recipe.name.toLowerCase();
           }
         })
-        res.json(recipe)
+        res.json(categories);
       }
     );
 
