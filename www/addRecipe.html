@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="css/style.css"></script>
+    <title>Recipes Website</title>
+  </head>
+<body>
+<form>
+    <div class="form-group">
+                <label for="formGroupExampleInput">Receptnamn</label>
+                <input type="text" class="form-control" id="recipeName" placeholder="Skriv namnet här...">
+    </div>
+    <div class="form-group">
+                <label for="formGroupExampleInput2">Instruktioner</label>
+                <input type="text" class="form-control" id="instruction" placeholder="Skriv in instruktionerna steg för steg">
+                <button id="addInstruction">Nytt steg</button>
+    </div>
+    <div class="form-row" id="ingredients">
+      <div class="col-5">
+        <input type="text" class="form-control" id="ingredientName" placeholder="Ingrediensnamn">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" id="ingredientAmmount" placeholder="Mängd">
+      </div>
+      <div class= "col">
+      <select class="custom-select" id="measurementSelector">
+            <option selected value="0" hidden>Välj måttenhet</option>
+            <option value="ml">ml</option>
+            <option value="dl">dl</option>
+            <option value="g">g</option>
+          </select>
+        </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Mängd i gram">
+      </div>
+      <button id="addIngredient">Ny ingrediens</button>
+    </div>
+  </form>
+  <button id="addRecipe"> Lägg till recept!</button>
+  <footer>
+
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="javaScript/search.js"></script>
+  <script src="javaScript/addRecipe.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </body>
+  </html>
