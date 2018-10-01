@@ -59,9 +59,9 @@ $("#kategorier").click(function (event) {
 });
 
 
-function filterCategories(category){
+function filterCategories(category) {
     console.log(category);
-    $.get('http://localhost:3000/recipes-by-category/' +category, (data) => {
+    $.get('http://localhost:3000/recipes-by-category/' + category, (data) => {
         $('#search-result').empty();
         data.forEach(listRecipes);
     });
@@ -119,23 +119,42 @@ function displayRecipe(recipeName) {
 
 //Display nutrition
 
-function findingNutrition(ingredient){
-    ingredient.forEach((ing)=>{
+function findingNutrition(ingredient) {
+    ingredient.forEach((ing) => {
         getNutrition(ing.name);
     }
-    )   
+    )
 }
 
-function getNutrition(ingredient){
+function getNutrition(ingredient) {
     console.log(ingredient);
     $.get('http://localhost:3000/ingredients/' + ingredient, (data) => {
         console.log(data);
         displayingNutrition(data);
 
-});
+    });
 }
 
-function displayingNutrition(nutrition){
+function calculationNutrition(nutrition){
+
+}
+
+function displayingNutrition(nutrition) {
     console.log("displaying nutrition");
     console.log(nutrition.Namn);
+    let display = $('<section></section>');
+    display.addClass('nutrition');
+    $("#nutritionSection").append(display);
+
+    let nutritionUlList = $('<ul></ul>');
+    display.append(nutritionUlList);
+
+
+    let nutritionLi = $('<li></li>');
+    let kolesterol = nutrition.Naringsvarden.Naringsvarde.find((namn) => namn.Namn.toLowerCase().includes("kolesterol"));
+    let energi = nutrition.Naringsvarden.Naringsvarde.find((namn) => namn.Namn.toLowerCase().includes("energi"));
+    let kolhydrat = nutrition.Naringsvarden.Naringsvarde.find((namn) => namn.Namn.toLowerCase().includes("kolhydrat"));
+    nutritionLi.text(nutrition.Namn + ' ' + kolesterol.Varde + ' ' +energi.Varde + ' '+ kolhydrat.Varde);
+    nutritionUlList.append(nutritionLi);
+
 }
