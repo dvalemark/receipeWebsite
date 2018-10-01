@@ -9,8 +9,7 @@ module.exports = class Routes {
   }
 
   setRoutes() {
-    //how to search through ingredients
-    /*  this.app.get(
+      this.app.get(
        '/autocomplete-ingredient-name/:startOfName',
        (req, res) => {
          
@@ -28,31 +27,26 @@ module.exports = class Routes {
          );
          res.json(result);
        }
-     ); */
-    /* this.app.get(
-      '/autocomplete-recipe-name/:startOfName',
+     ); 
+
+     //find nutrition
+     this.app.get(
+      '/ingredients/:ingredient',
       (req, res) => {
-        let value = req.params.startOfName.toLowerCase();
+        console.log("connected to backend")
+        let ingredients = req.params.ingredient.toLowerCase();
+        console.log(ingredients);
+        let ingredientDb = require('../json/livsmedelsdata.json') || [];
 
-        if(value.lenght < 2) {
-          res.json({error: 'please provide at least 2 characters.'});
-          return;
-
-        }
-        let result =this.recipes.filter(
-          recipe = recipe.Namn.toLowerCase().indexOf(start) == 0
-        ).map(
-          recipe => recipe.Namn
-        );
+        let result= ingredientDb.find((ing) => ing.Namn.toLowerCase().includes(ingredients));
+        
         res.json(result);
+        
       }
-    ); */
+    ); 
 
-    this.app.get('/recipeslist', (req, res) => {
-      console.log("i made it! I am empty");
-      res.json({ error: 'Please provide at least two characters...' });
-    });
-
+  
+//find matches
     this.app.get(
       '/recipes/:partOfRecipeName',
       async (req, res) => {
@@ -73,6 +67,7 @@ module.exports = class Routes {
       }
     );
 
+    //filter category
     this.app.get(
       '/recipes/:category',
       async (req, res) => {
@@ -88,23 +83,20 @@ module.exports = class Routes {
       }
     );
 
-
+//get single recipe
     this.app.get(
     '/recipeslist/:name',
     
        async (req, res) => {
         
         let value = req.params.name.toLowerCase();
-        console.log("backend value ", value)
         if (value.length === 0) {
           res.json({ error: 'No recipe name' });
           return;
         }
         let recipes = require('../json/recipe.json');
-        console.log("before find", recipes);
 
         let recipe = recipes.find((recipe) => recipe.name.toLowerCase().includes(value));
-        console.log("after find", recipe);
 
         res.json(recipe);
       } 
