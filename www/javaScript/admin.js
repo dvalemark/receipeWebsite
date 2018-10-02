@@ -1,5 +1,19 @@
-const ingredientArray= [];
+let recipeName;
+let recipePeople;
+let instructionArray=[];
+let ingredientArray= [];
+let imageUrl;
 
+//INSTRUCTIONSART OF FORM
+$('#addInstruction').click(function(){
+    console.log("hej")
+    let instruction = $('#instruction').val();
+    instructionArray = instructionArray.concat(instruction);
+
+    $('#instructionsAdded').append(`<li>${instruction}</li>`);
+})
+
+//INGREDIENTS PART OF FORM
 $('#ingredientName').keyup(function () {
     let searchValue = $('#ingredientName').val();
     $('#ingredientAc').empty();
@@ -34,15 +48,26 @@ $('#measurementSelector').on("change",function(){
 }
 })
 
-$('#addIngredient').click(e=>{
+////////////////////////ADDING INGREDIENTS/////////////////
+$('#addIngredient').click(function(){
     let name = $('#ingredientName').val();
     let unit = $('#ingredientAmmount').val();
     let measuringUnit =$('#measurementSelector').val();
     let unitEquivalentInGrams =$('#ammountGram').val();
     
     ingredientArray = ingredientArray.concat(new Ingredient(name, unit, measuringUnit, unitEquivalentInGrams));
-    console.log(ingredientArray);
+   $('#ingredientsAdded').append(`<li>${name} ${unit}${measuringUnit} mängd i gram: ${unitEquivalentInGrams}</li>`);
+   emptyIngredient();
 });
+
+function emptyIngredient(){
+    $('#ingredientName').val('');
+    $('#ingredientAmmount').val('');
+    $('#measurementSelector').prop('selectedIndex',0);
+    $('#ammountGram').val('');
+}
+
+
 
 function prepareRecipe(){
 
