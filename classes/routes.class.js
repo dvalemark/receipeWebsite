@@ -13,32 +13,34 @@ module.exports = class Routes {
        '/autocomplete-ingredient-name/:startOfName',
        (req, res) => {
          
+         
          let start = req.params.startOfName.toLowerCase();
          
          if(start.length < 2){
            res.json({error: 'Please provide at least two characters...'});
            return;
          }
+         let ingredients = require('../json/livsmedelsdata.json') || [];
          
-         let result = this.ingredients.filter(
-           ingredient => ingredient.Namn.toLowerCase().indexOf(start) == 0
-         ).map(
-           ingredient => ingredient.Namn
-         );
+         let result = ingredients.filter((ingredient) => {
+           return ingredient.Namn.toLowerCase().includes(start)
+        })
+        
          res.json(result);
        }
-     ); 
+      );
+    
 
      //find nutrition
      this.app.get(
       '/ingredients/:ingredient',
       (req, res) => {
-        console.log("connected to backend")
+        
         let ingredients = req.params.ingredient.toLowerCase();
-        console.log(ingredients);
+        
         let ingredientDb = require('../json/livsmedelsdata.json') || [];
 
-        let result= ingredientDb.find((ing) => ing.Namn.toLowerCase().includes(ingredients));
+        let result= ingredientDb.find((ing) => ing.Namn.toLowerCase().startsWith(ingredients));
         
         res.json(result);
         
