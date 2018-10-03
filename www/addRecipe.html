@@ -17,8 +17,12 @@
   <form>
     <div class="form-group">
       <label for="formGroupExampleInput">Receptnamn</label>
-      <input type="text" class="form-control" id="recipeName" placeholder="Skriv namnet här...">
+      <input type="text" class="form-control" id="recipeName" onfocusout="addName()" placeholder="Skriv namnet här...">
     </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput">Antal personer</label>
+        <input type="text" class="form-control" id="nbrPeople" onfocusout="addPeople()" placeholder="Skriv antalet personer här...">
+      </div>
     <div class="form-row">
       <div class="col-5" id)>
         <ol id="instructionsAdded"></ol>
@@ -50,6 +54,7 @@
           <option value="ml">ml</option>
           <option value="dl">dl</option>
           <option value="g">g</option>
+          <option value="st">st</option>
         </select>
       </div>
       <div class="col">
@@ -59,8 +64,8 @@
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Url till Bild</label>
-      <input type="text" class="form-control" id="instruction" placeholder="Skriv in bildUrl">
-      <button type="button" id="addInstruction">Lägg till bild</button>
+      <input type="text" class="form-control" id="imageUrl" placeholder="Skriv in bildUrl">
+      <button type="button" id="addImageUrl">Lägg till bild</button>
     </div>
   </form>
   <button type="button" id="addRecipe"> Lägg till recept!</button>

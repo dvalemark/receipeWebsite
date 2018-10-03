@@ -113,6 +113,12 @@ function displayRecipe(recipeName) {
         instructionsOlList.append(instructionLi);
     })
 
+    let imageDisplay = $('<div></div>')
+    display.append(imageDisplay);
+    let image= $(`<img src="${recipeName.urlToImage}" class="img-thumbnail">`)
+    imageDisplay.append(image);
+    
+
 }
 
 //Display nutrition

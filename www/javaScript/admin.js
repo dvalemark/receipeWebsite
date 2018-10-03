@@ -4,9 +4,21 @@ let instructionArray=[];
 let ingredientArray= [];
 let imageUrl;
 
+///NAME
+function addName(){
+    recipeName =$('#recipeName').val();
+    console.log(recipeName);
+}
+
+//ADD PEOPLE
+function addPeople(){
+    recipePeople=$('#nbrPeople').val();
+    console.log(recipePeople);
+}
+
+
 //INSTRUCTIONSART OF FORM
 $('#addInstruction').click(function(){
-    console.log("hej")
     let instruction = $('#instruction').val();
     instructionArray = instructionArray.concat(instruction);
 
@@ -68,7 +80,7 @@ function emptyIngredient(){
 }
 
 
-
-function prepareRecipe(){
-
-}
+///////URL ADDING
+$('#addImageUrl').click(function(){
+    imageUrl= $('#imageUrl').val();
+})
