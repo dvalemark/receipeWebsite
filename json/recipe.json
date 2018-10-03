@@ -1,204 +1,188 @@
 [
     {
-        "id": 1,
         "name": "Pannkakor",
         "people": 4,
         "instructions": [
-            "Knäck äggen", 
-            "Blanda i hälften av mjölet", 
+            "Knäck äggen",
+            "Blanda i hälften av mjölet",
             "Tillsätt mjölken",
             "Blanda i resten av mjölet",
             "Stek i en uppvärmd stekpanna",
             "Avnjut med tillbehör, t.ex frukt, sylt eller grädde!"
         ],
-        "ingredients":
-        [
-         {
-             "name":"ägg",
-             "units": 4,
-             "measuringUnit": "st",
-             "unitEquivalentInGrams": 240
-        },
-        {
-            "name": "mjölk",
-            "units": 6,
-            "measuringUnit": "dl",
-            "unitEquivalentInGrams":600
-        },
-        {
-            "name":"Mjöl",
-            "units":8,
-            "measuringUnit":"dl",
-            "unitEquivalentInGrams":400
-        },
-        {
-            "name":"Smör",
-            "units":50,
-            "measuringUnit":"g",
-            "unitEquivalentInGrams": 50
-        }
-
+        "ingredients": [
+            {
+                "name": "ägg",
+                "units": 4,
+                "measuringUnit": "st",
+                "unitEquivalentInGrams": 240
+            },
+            {
+                "name": "mjölk",
+                "units": 6,
+                "measuringUnit": "dl",
+                "unitEquivalentInGrams": 600
+            },
+            {
+                "name": "Mjöl",
+                "units": 8,
+                "measuringUnit": "dl",
+                "unitEquivalentInGrams": 400
+            },
+            {
+                "name": "Smör",
+                "units": 50,
+                "measuringUnit": "g",
+                "unitEquivalentInGrams": 50
+            }
         ],
         "category": "efterrätt",
         "urlToImage": "https://files.hemmets.se/uploads/2017/12/Pasta-med-rostad-kalrot-och-apelsin-1.jpg"
-
     },
     {
-        "id": 2,
         "name": "köttgryta",
         "people": 4,
         "instructions": [
-            "Stek löken och köttet", 
-            "Häll på vatten och tillsätt fond", 
+            "Stek löken och köttet",
+            "Häll på vatten och tillsätt fond",
             "Krydda efter behag!"
         ],
-        "ingredients":
-        [
-         {
-             "name":"lök",
-             "units": 1,
-             "measuringUnit": "st",
-             "unitEquivalentInGrams": 40
-        },
-        {
-            "name": "högrev",
-            "units": 300,
-            "measuringUnit": "g",
-            "unitEquivalentInGrams":300
-        },
-        {
-            "name":"köttfond",
-            "units":2,
-            "measuringUnit":"msk",
-            "unitEquivalentInGrams":20
-        },
-        {
-            "name":"vatten",
-            "units":500,
-            "measuringUnit":"ml",
-            "unitEquivalentInGrams": 500
-        }
-
+        "ingredients": [
+            {
+                "name": "lök",
+                "units": 1,
+                "measuringUnit": "st",
+                "unitEquivalentInGrams": 40
+            },
+            {
+                "name": "högrev",
+                "units": 300,
+                "measuringUnit": "g",
+                "unitEquivalentInGrams": 300
+            },
+            {
+                "name": "köttfond",
+                "units": 2,
+                "measuringUnit": "msk",
+                "unitEquivalentInGrams": 20
+            },
+            {
+                "name": "vatten",
+                "units": 500,
+                "measuringUnit": "ml",
+                "unitEquivalentInGrams": 500
+            }
         ],
         "category": "huvudrätt",
         "urlToImage": "https://files.hemmets.se/uploads/2017/12/Pasta-med-rostad-kalrot-och-apelsin-1.jpg"
     },
     {
-        "id": 3,
         "name": "gubbröra",
         "people": 4,
         "instructions": [
-            "Blanda majonäs och gräddfil", 
-            "Blanda i kryddor", 
+            "Blanda majonäs och gräddfil",
+            "Blanda i kryddor",
             "Blanda i skaldjur och fisk"
         ],
-        "ingredients":
-        [
-         {
-             "name":"majonäs",
-             "units": 2,
-             "measuringUnit": "dl",
-             "unitEquivalentInGrams": 200
-        },
-        {
-            "name": "räkor",
-            "units": 100,
-            "measuringUnit": "g",
-            "unitEquivalentInGrams":100
-        },
-        {
-            "name":"gräddfil",
-            "units":6,
-            "measuringUnit":"dl",
-            "unitEquivalentInGrams":600
-        },
-        {
-            "name":"anchovis",
-            "units":100,
-            "measuringUnit":"g",
-            "unitEquivalentInGrams": 100
-        }
-
+        "ingredients": [
+            {
+                "name": "majonäs",
+                "units": 2,
+                "measuringUnit": "dl",
+                "unitEquivalentInGrams": 200
+            },
+            {
+                "name": "räkor",
+                "units": 100,
+                "measuringUnit": "g",
+                "unitEquivalentInGrams": 100
+            },
+            {
+                "name": "gräddfil",
+                "units": 6,
+                "measuringUnit": "dl",
+                "unitEquivalentInGrams": 600
+            },
+            {
+                "name": "anchovis",
+                "units": 100,
+                "measuringUnit": "g",
+                "unitEquivalentInGrams": 100
+            }
         ],
         "category": "förrätt",
         "urlToImage": "https://files.hemmets.se/uploads/2017/12/Pasta-med-rostad-kalrot-och-apelsin-1.jpg"
     },
     {
-        "id": 4,
         "name": "palt",
         "people": 4,
         "instructions": [
-            "Stek löken och köttet", 
-            "Häll på vatten och tillsätt fond", 
+            "Stek löken och köttet",
+            "Häll på vatten och tillsätt fond",
             "Krydda efter behag!"
         ],
-        "ingredients":
-        [
-         {
-             "name":"lök",
-             "units": 1,
-             "measuringUnit": "st",
-             "unitEquivalentInGrams": 40
-        },
-        {
-            "name": "högrev",
-            "units": 300,
-            "measuringUnit": "g",
-            "unitEquivalentInGrams":300
-        },
-        {
-            "name":"köttfond",
-            "units":2,
-            "measuringUnit":"msk",
-            "unitEquivalentInGrams":20
-        },
-        {
-            "name":"vatten",
-            "units":500,
-            "measuringUnit":"ml",
-            "unitEquivalentInGrams": 500
-        }
-
+        "ingredients": [
+            {
+                "name": "lök",
+                "units": 1,
+                "measuringUnit": "st",
+                "unitEquivalentInGrams": 40
+            },
+            {
+                "name": "högrev",
+                "units": 300,
+                "measuringUnit": "g",
+                "unitEquivalentInGrams": 300
+            },
+            {
+                "name": "köttfond",
+                "units": 2,
+                "measuringUnit": "msk",
+                "unitEquivalentInGrams": 20
+            },
+            {
+                "name": "vatten",
+                "units": 500,
+                "measuringUnit": "ml",
+                "unitEquivalentInGrams": 500
+            }
         ],
         "category": "huvudrätt",
         "urlToImage": "https://files.hemmets.se/uploads/2017/12/Pasta-med-rostad-kalrot-och-apelsin-1.jpg"
     },
     {
-        "id": 5,
         "name": "pannbiff",
         "people": 4,
         "instructions": [
-            "Stek löken och köttet", 
-            "Häll på vatten och tillsätt fond", 
+            "Stek löken och köttet",
+            "Häll på vatten och tillsätt fond",
             "Krydda efter behag!"
         ],
-        "ingredients":
-        [
-         {
-             "name":"lök",
-             "units": 1,
-             "measuringUnit": "st",
-             "unitEquivalentInGrams": 40
-        },
-        {
-            "name": "högrev",
-            "units": 300,
-            "measuringUnit": "g",
-            "unitEquivalentInGrams":300
-        },
-        {
-            "name":"köttfond",
-            "units":2,
-            "measuringUnit":"msk",
-            "unitEquivalentInGrams":20
-        },
-        {
-            "name":"vatten",
-            "units":500,
-            "measuringUnit":"ml",
-            "unitEquivalentInGrams": 500
-        }
-
+        "ingredients": [
+            {
+                "name": "lök",
+                "units": 1,
+                "measuringUnit": "st",
+                "unitEquivalentInGrams": 40
+            },
+            {
+                "name": "högrev",
+                "units": 300,
+                "measuringUnit": "g",
+                "unitEquivalentInGrams": 300
+            },
+            {
+                "name": "köttfond",
+                "units": 2,
+                "measuringUnit": "msk",
+                "unitEquivalentInGrams": 20
+            },
+            {
+                "name": "vatten",
+                "units": 500,
+                "measuringUnit": "ml",
+                "unitEquivalentInGrams": 500
+            }
         ],
         "category": "huvudrätt",
         "urlToImage": "https://files.hemmets.se/uploads/2017/12/Pasta-med-rostad-kalrot-och-apelsin-1.jpg"

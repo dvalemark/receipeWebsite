@@ -3,6 +3,7 @@ let recipePeople;
 let instructionArray=[];
 let ingredientArray= [];
 let imageUrl;
+let recipeNew;
 
 ///NAME
 function addName(){
@@ -17,11 +18,12 @@ function addPeople(){
 }
 
 
-//INSTRUCTIONSART OF FORM
+//INSTRUCTIONSPART OF FORM
 $('#addInstruction').click(function(){
     let instruction = $('#instruction').val();
     instructionArray = instructionArray.concat(instruction);
-
+    console.log(instructionArray);
+    console.log("hej");
     $('#instructionsAdded').append(`<li>${instruction}</li>`);
 })
 
@@ -68,7 +70,8 @@ $('#addIngredient').click(function(){
     let unitEquivalentInGrams =$('#ammountGram').val();
     
     ingredientArray = ingredientArray.concat(new Ingredient(name, unit, measuringUnit, unitEquivalentInGrams));
-   $('#ingredientsAdded').append(`<li>${name} ${unit}${measuringUnit} mängd i gram: ${unitEquivalentInGrams}</li>`);
+    console.log(ingredientArray);
+    $('#ingredientsAdded').append(`<li>${name} ${unit}${measuringUnit} mängd i gram: ${unitEquivalentInGrams}</li>`);
    emptyIngredient();
 });
 
@@ -84,3 +87,18 @@ function emptyIngredient(){
 $('#addImageUrl').click(function(){
     imageUrl= $('#imageUrl').val();
 })
+
+///SEND RECIPE
+
+$('#addRecipe').click(function(){
+    let newRecipe= new AddRecipe(recipeName, recipePeople, instructionArray,ingredientArray,imageUrl);
+    addRecipe(newRecipe);
+})
+
+ function addRecipe(recipe){
+     //let va =JSON.stringify(recipe);
+     //console.log(va);   
+    $.post('http://localhost:3000/addrecipe/' + recipe, (data) => {
+        
+    }); 
+} 

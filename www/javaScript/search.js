@@ -51,7 +51,7 @@ function listAc(recipe) {
 $("#kategorier").click(function (event) {
     var target = $(event.target);
     if (target.is("a")) {
-        console.log(target.text())
+
         filterCategories(target.text());
     }
 });
