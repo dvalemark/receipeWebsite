@@ -74,7 +74,7 @@ $('#search-result').click(function (event) {
         getRecipeDescription(target.text());
     }
 });
-
+//SHOW RECIPE WHEN CLICKED
 function getRecipeDescription(recipeName) {
     $.get('http://localhost:3000/recipeslist/' + recipeName, (data) => {
         $('#search-result').empty();
@@ -128,11 +128,11 @@ function findingNutrition(ingredient) {
         getNutrition(ing.name);
     }
     )
-    displayingNutrition();
 }
 
 function getNutrition(ingredient) {
     console.log(ingredient);
+
     $.get('http://localhost:3000/ingredients/' + ingredient, (data) => {
         console.log(data);
         //displayingNutrition(data);
@@ -140,10 +140,13 @@ function getNutrition(ingredient) {
     });
 }
 
+const findNutrient = nutrientName=> (nutrient) => nutrient.Namn.toLowerCase().includes(nutrientName);
+
+//CALCULATIONS
 function calculationNutrition(nutrition){
-    let kolesterol = nutrition.Naringsvarden.Naringsvarde.find((namn) => namn.Namn.toLowerCase().includes("kolesterol"));
-    let energi = nutrition.Naringsvarden.Naringsvarde.find((namn) => namn.Namn.toLowerCase().includes("energi"));
-    let kolhydrat = nutrition.Naringsvarden.Naringsvarde.find((namn) => namn.Namn.toLowerCase().includes("kolhydrat"));
+    let kolesterol = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("kolesterol"));
+    let energi = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("energi"));
+    let kolhydrat = nutrition.Naringsvarden.Naringsvarde.find(findutrient("kolhydrat"));
     console.log(kolhydrat.Varde);
     displayCarbohydrates(kolhydrat.Varde);
     displayCholesterol(kolesterol.Varde);
@@ -152,14 +155,16 @@ function calculationNutrition(nutrition){
 
 function displayCarbohydrates(carb){
     let prevSum =$('#sumKolhydrater').text();
-    let sum = parseFloat(prevSum) + parseFloat(carb);
+    let sum = (parseFloat(prevSum) + parseFloat(carb)).toFixed(2);
     $('#sumKolhydrater').text(sum);
 }
+
 function displayCholesterol(chol){
     let prevSum =$('#sumKolesterol').text();
     let sum = parseFloat(prevSum) + parseFloat(chol);
     $('#sumKolesterol').text(sum);
 }
+
 function displayEnergy(ener){
     let prevSum =$('#sumEnergi').text();
     let sum = parseFloat(prevSum) + parseFloat(ener);

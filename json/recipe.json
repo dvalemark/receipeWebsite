@@ -1,207 +1,105 @@
 [
     {
-        "id": 1,
         "name": "Pannkakor",
         "people": 4,
         "instructions": [
-            "Knäck äggen", 
-            "Blanda i hälften av mjölet", 
+            "Knäck äggen",
+            "Blanda i hälften av mjölet",
             "Tillsätt mjölken",
             "Blanda i resten av mjölet",
             "Stek i en uppvärmd stekpanna",
             "Avnjut med tillbehör, t.ex frukt, sylt eller grädde!"
         ],
-        "ingredients":
-        [
-         {
-             "name":"ägg",
-             "units": 4,
-             "measuringUnit": "st",
-             "unitEquivalentInGrams": 240
-        },
-        {
-            "name": "mjölk",
-            "units": 6,
-            "measuringUnit": "dl",
-            "unitEquivalentInGrams":600
-        },
-        {
-            "name":"Mjöl",
-            "units":8,
-            "measuringUnit":"dl",
-            "unitEquivalentInGrams":400
-        },
-        {
-            "name":"Smör",
-            "units":50,
-            "measuringUnit":"g",
-            "unitEquivalentInGrams": 50
-        }
-
+        "ingredients": [
+            {
+                "name": "ägg konventionellt rått",
+                "units": 4,
+                "measuringUnit": "st",
+                "unitEquivalentInGrams": 240
+            },
+            {
+                "name": "Mellanmjölk fett  1,5% berik m D-vitamin",
+                "units": 6,
+                "measuringUnit": "dl",
+                "unitEquivalentInGrams": 600
+            },
+            {
+                "name": "Vetemjöl bagerivetemjöl",
+                "units": 8,
+                "measuringUnit": "dl",
+                "unitEquivalentInGrams": 400
+            },
+            {
+                "name": "Bordsmargarin mjölkfri fett 60% berikad typ Milda",
+                "units": 50,
+                "measuringUnit": "g",
+                "unitEquivalentInGrams": 50
+            }
         ],
         "category": "efterrätt",
         "urlToImage": "https://files.hemmets.se/uploads/2017/12/Pasta-med-rostad-kalrot-och-apelsin-1.jpg"
-
     },
     {
-        "id": 2,
-        "name": "köttgryta",
-        "people": 4,
+        "name": "Ärtsoppa",
+        "people": "2",
         "instructions": [
-            "Stek löken och köttet", 
-            "Häll på vatten och tillsätt fond", 
-            "Krydda efter behag!"
+            "Öppna burken"
         ],
-        "ingredients":
-        [
-         {
-             "name":"lök",
-             "units": 1,
-             "measuringUnit": "st",
-             "unitEquivalentInGrams": 40
-        },
-        {
-            "name": "högrev",
-            "units": 300,
-            "measuringUnit": "g",
-            "unitEquivalentInGrams":300
-        },
-        {
-            "name":"köttfond",
-            "units":2,
-            "measuringUnit":"msk",
-            "unitEquivalentInGrams":20
-        },
-        {
-            "name":"vatten",
-            "units":500,
-            "measuringUnit":"ml",
-            "unitEquivalentInGrams": 500
-        }
-
+        "ingredients": [
+            {
+                "name": "Ärtsoppa m fläsk hemlagad",
+                "unit": "10",
+                "measuringUnit": "dl",
+                "unitEquivalentInGrams": "800",
+                "unitPerPerson": 400
+            }
         ],
-        "category": "huvudrätt",
-        "urlToImage": "https://files.hemmets.se/uploads/2017/12/Pasta-med-rostad-kalrot-och-apelsin-1.jpg"
+        "category": "Huvudrätt",
+        "urlToImage": "data:image/jpeg;base64,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"
     },
     {
-        "id": 3,
-        "name": "gubbröra",
-        "people": 4,
+        "name": "Våfflor",
+        "people": "2",
         "instructions": [
-            "Blanda majonäs och gräddfil", 
-            "Blanda i kryddor", 
-            "Blanda i skaldjur och fisk"
+            "Grädda",
+            "Ät"
         ],
-        "ingredients":
-        [
-         {
-             "name":"majonäs",
-             "units": 2,
-             "measuringUnit": "dl",
-             "unitEquivalentInGrams": 200
-        },
-        {
-            "name": "räkor",
-            "units": 100,
-            "measuringUnit": "g",
-            "unitEquivalentInGrams":100
-        },
-        {
-            "name":"gräddfil",
-            "units":6,
-            "measuringUnit":"dl",
-            "unitEquivalentInGrams":600
-        },
-        {
-            "name":"anchovis",
-            "units":100,
-            "measuringUnit":"g",
-            "unitEquivalentInGrams": 100
-        }
-
+        "ingredients": [
+            {
+                "name": "Våfflor frasvåfflor",
+                "unit": "4",
+                "measuringUnit": "st",
+                "unitEquivalentInGrams": "400",
+                "unitPerPerson": 200
+            },
+            {
+                "name": "Jordgubbssylt",
+                "unit": "4",
+                "measuringUnit": "dl",
+                "unitEquivalentInGrams": "400",
+                "unitPerPerson": 200
+            }
         ],
-        "category": "förrätt",
-        "urlToImage": "https://files.hemmets.se/uploads/2017/12/Pasta-med-rostad-kalrot-och-apelsin-1.jpg"
+        "category": "Efterrätt",
+        "urlToImage": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAHkAjgMBEQACEQEDEQH/xAAaAAACAwEBAAAAAAAAAAAAAAAEBQECAwAG/8QAOBAAAgEDAwIEBAMHAwUAAAAAAQIDAAQRBRIhMUETIlFhFDJxgQaRoSNCUnKxwdEVM/AkQ4KS4f/EABoBAAIDAQEAAAAAAAAAAAAAAAIDAAEEBQb/xAAvEQADAAICAQMDAwMDBQAAAAAAAQIDERIhMQQTQSIyURRhoUJxkQXB8CNSgbHR/9oADAMBAAIRAxEAPwD3u6kjCuamyEbqrZCN1UQ7dUIduqEJ3VNkODVZC26oQ7dVEI3VCE7qhDt1Qh26oQjdUITuqyEbqhCN1QhPhv6Gr4lbM3jfoM5oWmXtEeFJ61EmTaO8GT1qcSbRwhk9avRNnNFJjg1TRNnCKTHWq0yckT4MnrRcStlvCk9anEmyHikxwapplpnCGT1qaJs7w39ammTZ3hyVWmTaKskoFTTL2iAJSOlRFE4kqyHESVOyFCJanZa0P3jHQKKeLKrbgDzDmq0Q4wr6VNFFTCD2qaIUaHFVosiODcSaiRC3gHsKjRCpUA7SVBHXNJ9/FvXJbD9u/wAEmI+lOAMp1Ea7nIUep4pOXPjxLdsOIqnpI6XwoZEjkmRWcZAY4pH63FvT6Gfp7a2ijS26vGniLuk6en50M+vxN6fQX6XJraNSkakh5o1I9T1+lF+tw/kD2LfwcYCVBGGB9KZHqMVrpgVjpMzEeOMc09IFk+F7VeitneF7VNE2VMXtU4k2NkQ8kjk0ZRJQ1ZCChqiFHXw+XZVHuaVkyxj+5hTLrwgK6vYbeXw5SQP4u1c/J/qkTXHiaY9JVLezpb22s4vEmlTw8bgT5fpU/X8V3psufSu61KE+p66gKPFclGKBl2p2+hrnXkyXk5bN+P0ulriL9W1to5EkSTO9A+0rvzke3el1HuVtj8WFa0F3Ov3MdsLxOFwrFHHZgP6U/HmyxfTEfpsdfSwfXL+8itxPFuOyQgkSAfnntSV9VfUxuGI+1imbULq70mC4a6bc5ZHaLz5IOMA0VQlff8j4iZtpIizu5m0lUZlSSCTaRJ5iFPKsSO/Wpkmd9EaXuPrybWdxc3FvKdzSzRyjEh8pYH0z2oLiemR8Zr9h1p11deGy3WB/AqNux65NKbWtJiMmOf6R1Zz5VlkmDAdOflx24rRizUk02YsmPvaQVDidQQNpPY9TXX9H6r3J+sx5sfF9F/CA4/pW2Lm1uXsS015K+GKMoO5xwKsoruwhd/KFGTQ1SmXT+C0m3pCa41G+fPw1uYkyMPLgbh64PP6Vxs/rs7+zpHQxenxL73tkahdWruHKzyYAwOxI9qxZ8kZL5dv+43FjtLS0hRdX63bSKXMbdMDyn+lKqqb2aYxcNaE1+3xlwShaJAoBTGR09GxzR713o0QuCANTAvwoiZz4aBT4iluQMdqZNcX2HDcIGvYJLyGCONwWgjWNi4KAHHRfbijm1LbZJ2hr4R/0H4c+H4qwGMqpLHg5696XVy72J19ewi7jXUNIRN0ZkcI4Vl3fu85H2qm+N7Kh8aADbw2WnyR3sw27t3iY2BB6Adcfar5u6+lDU23tHWzxw2oexjDxTEH5grOe2dx5/KpU03qidU+zdZ5YYwGt5UuCT5IxvUe+TxQcZb8k0n/YL3lYY4FuVd5DtDuuTn7Uv7n4B15pof2Vm9tsCQFN58+18FjjsKNRe9aff7/7GTJkmt7Y2iZmhCunmHAJzmnzbrG1U9mStKumVllMDRpjO7qc8LVxmrDUr8k4K02EYPY16I54QXYDO2q5BaISZTKqSjhh36f84pN5p5e20Gsb1yQmv8XuoJCreQZLYPAHf7Vx80rJkNmOnE7Avh0vFxHnYhwJXUYHso6fYViS5drwaVfB9gFzaRJKtq8rPKSNirlRn7Gq2t9D5yNrloGm0hxOWleEE8KYUO9qPl8FrMtdFW0Vom2PO7Pgkjd5gPotXVd6SCWba2DJbweBJNbQb0Q4L7QvI6nc3Bq3v+oLk96+Q9LFg8ahZyrgl3MZ2njPJHFXw/Ip5OiLWEE3EVksXiLyyr1I9/l96i7WyU9a5BLWsojjaW3Yx4z5sHHHoBzVd+dAqk20mcmkWkt75rbMgGQ5iwD9D61a23xI81KN7NG/D8KXXjGSRZYun7TdjjnNRrjuQf1LaD4LGFXDuNy7MCNRg5Gec56mriZp9/8AP5FVmrWkE2mdoaVJUkUFVDPuYD3/APlVya6raYutfD6LF3gLnxC+R5UPXNAm433smuWujZI2nYF1BQcjn+1b/S+n921VeF2IyZFC0go+4ruGIl3OcqeMdMUinrsalsVXW7UI5FSdYtozyMn8vtXDvM/U21vSRumFi11sjTp44B4DHxm2FmIGCc4yMdccfrV4sqla1td/8/j+SZYdPfgmWVZSrGZEGOFx09sdqVkpW029FzPH4B2+GB3IyiXbjxCozjsKS6n4GJU+mYaHE0eqT3GpOjLFH+wZCcEnIPHXI/vWn0rxKm7ZWf7FOP8A8hixWcV29xHHsnC8OxJIB9PSh4yn9PQDu3PF9oHW3GoRTRagDsc+UI3mA+tJx0vFdjXTxtOBoY40iVbYCJExtXsAPatN8a7l6/8ARmTrf1dnmbiWPTtfuSiIrToBnt+VIdUto3JO8K/YeW15H8OIkl3MxJ3Yxj2FN92Vj4SzHUPlyaJaF7kACZhtYHKnnikzFW9thq1PwbiPwyxyMN83ej1U7B3yPO6zdz2l+VteImx16A/Wluk39PRqxY5qd15HNqWeEFJkcD5m3dT/AGolNV9pmpqX2ik1xDEpdlRW53Nn075pe0n0uw1NPwN9JXNqsp5EnK/y9q7n+nYnOLm/kxeoa58V8BbQg/vEfSt7T/IjpAhJbHBpQYl1a0ml1S3O+SGJmx4qAenT8x+tcb1GF/qdNaT+TfgyJYn8v8AFpAb7VJLSWT9ikbOxHVgOB9OTWfFHuU0/gfV8MateQC4hvrdHjLb1UnZzn86W5XhjleOntAMGrzKTFdxFefNIg3cUTxLzLDrGvKG1nqcbrtinSVc9CeaD6p8oRWIK+NRm5TJz19aGnv4KUNF4rhGkGcgE9jQdEpNIYPNEsfmB444ataUOd6M2r30eB/FAY/iG2cS/9PsBK87uvTn6jpTcfBY2kdLBy4G11qEqvBJpWWcjDxNyE98jvSljj+ok4tpqx5baxOtuXnhkgbcAG35Ujv16Up6T+l9i69OnWk9h9tdXM4DlWaP+JcDilptvsVcTPR5iZFOqsup3DeMpyCGwCOxx9MCnbfH6Ua0/+n9CG9g8ceUso5CsnmLdBSu2IyL5thF9pVxqtuLaIeGGZcux4GKbhx06SlARnnDXJns40WGJI16KoAr08pRKlfBxG3T2WBJ6Cr2TQLHyOtJXYZE6KzorP58Eqndh3pHqJmmtvv4DhtJv4EccTaOJ5CsZknfc6qM7R2Gf1rk17np51Xybm1n0vwVFzZNbMPBDysxLM3p2oPcxcNJdk4ZFXnoVXVpYM+Qmxic4UcUls0TeTQtu9BtZ7lbmJtkyDCui4Jz/AFo5z1K4+UNnK9aaCotIuIYTJKsc0aDLMpwavVUuSAeaW9LoiMRPLvgjl6YK+IVH5dKW/GmG3SWmzd4LuZk3SRwxrzhOT6d6rkkLTlfuUm0sXhT4mYsUGFJHainI0WsnD7UTbaQbQE27qB18wqVTrtkeVV5DkM+zYREcH+A0G9laney8+oG3gYpkseFVR1NWvwiliVvsU2mgW8Mcdy0c26MYCM5bjOaOsttMa87+xG2p3Nxpt7FDBtAnAZTjP1FXMtLYGOJyy3XwN7JrpiCZXJA5ycVUXe978Ge1B6K3LPErOefavRenp1jTrycy0lWkaN9acwQK3k5ApEsa0CanJFFexT+YsvzHvjB4Ht3rlepc+8r+TThTeNyZpqEF3wwyAcFgOlL92bf1FvHUdo8/rWnywzx3lnIwtww8ZF8uB649M0DxpJm3BmmlwryFCAS27PBITkHG71pfFJdCeWq0ybfTrswoJp4fE6kxxYB9uT/io534RbyzvrYSbSdU2qMr1IDGgcV4QPOfIlj1NWuriAQOzQnBIxg/SreNpJ78mhx0mEwxvMxZFeIE5IY96HQLpI5DM138OqOzj97GFH3qa2F9PHkxrbadOx3SS+XuMUc4apGes0rwgG8klivmtA7gBQ3EZAx/N0zQVLS2Mhy1sOt4AyAsPvRTjdLYq8mnoKt5hO7xQooEfzM3Ap8J1tJdIVX0pNmVzZWbSxzzt4k8WdrdAv2qUscz52w4vLpyukxTa65G1q7cJscoHcgBsHrSXuevk036bTG0eqtbvBG8viwyjCkDnP8Aw1rxetvE1L7ky36bmm100PE2soI6EZrtS1S2jntaehL44ihEzMMbsYrnZfULEuTNUxzekD6zNdXtsktjZiWRumJAPqfWs2Sln00tD8MTjerrSLy2ssOjQWxeOG5JDuyDIznJPvQ5YU41Pgk2nldeUAyXhtWClgwPBJFZ1dT4Ge3Ndmk2r21qqm7KLGv7x5APvTFbp8eKAWCq+0vPq0JWM2yGbeM5T5QO1BTnXjsucVf1PRnqeti0sARETcONqJ70UWqWg8fp3d+ejzdjZ6tZag11NbyXUNyu5zEq5iYdgO4NFvHklJdaNGR43PGX4PRWeoW0xKhjGy9VlQqRS2tfJlrFS70GfGW0R3M6527gccEexqaS72Bwt9aCd5dVeWbYp5xGcfmTRNrxT/wDr8IHv50QK1pFFJcPhWZjnavPOfWrq8an6V2MxRT+99HjPxbbagLGMaNcyQ3HiKojEh2sM4PH68VfpLlVrL4NT5NfTrf7ifR/xdqum6xc6DfSJdyxuUN1FgBjjPOfTOPtWzN6aXHux0n8CcWs16pdo9NHfX1+DEkS5PBYEsP7VzamZNftxC2MLT8PQjwWupGcwAeHEPlHvjuaiyPv9xV+pr+n5HWnx2uzxkuIZQjYGGDY/wAGtHp8a5JsxZnXjTQz8VlH7PBHvXanpakwtd9nkbsvIVt41kdpG2hU5OT/AM61zLlU+J0I6+oa6LM4t2QL4UkLFSGPc/55pUzUeOmgMmm9+dlNSumRSJkLkdCvGBSqyt1q0HGP/tYunOmXVvt33Rdh8oUDB+tHVYWut7CmMsv4N7u90zVozY3Fs0Ucgw8bLg+2COhz0oqyQ6VT1+Spx5cb5J7Ij01YCWs5ty4/25CARj0+1Z6SruWH7rrqkDNdrDcLJOmzA/7g6felJPY/g3Okb3X4gFvgSFYs9F9RWj3LfUip9Kq78nlbz8TSXFwIbaAmPq0jDb/6gck/pRr03W7fZqnDrpIV6rZavBp8uoW9xczzPgeAdzhR9O1PxZMV37bWkXba3wC2/wBesPw/b3k08LzyFR4Owsh6557EfXHFC8eCsmtdCpqrfHpUvP4Gmjahqmo3Sxi0togy8Zdice/FIvFinpNsPIolbbGjaJqTy/ELcQxTYwJAhcr/AC54FKVTrWgFnjXHQpj/AAdY6PctqDrLd380hIZzgF2PXFOyeryZJUeETHUOm5Wj1dhp8sKANIFGcnaP05rP7e32zPkzJvpG8rW8MzHJLtgFSxP39qCnKf0lSrpdmWmaSsElxcvG4z8uRtH5Vo9PFOt0ieoz8pUoYq+AMN+VdifHkwNdm4sIrSXxrdFVyMAnzEU72lD5SBzdLTBLxXyk6IHlQ5x/F7VlzQ33rbHQ14fgQ3d43xHiX1u6DnOw4/tXLvHXLk1/t/8ATdCXHjLFsur6etzGtsHKgebPB3egz1ofaetjlNaexraXFlNK03hu8h55HJ+1V0n32IubS1sW/iK8uFUi2t3LY4MbYIPpRSpp9vQzDK+WINC1SZQbf8RxtuklJinYEqB2DHtj1rTlxQ3vCHU2u0e2VonjRTKhO0AH2rFU7fkRLa+Aq2gjK5R0P3wKpY/3ArIwpFWE8FRwQQeQw6UcqoewHXIV3OgRXN14kM86K5yVJ3Bf5fam6VNJIdPqnM6aRpo+nnTru4RiJZeBnpj6iqS4000Blye4k0GTahYWXmnvI957bx+goel2u2VOLJk6S6AptWe7uYvg9PkmRQSHfyKD07jp71V2n5+B0+nUS+Va/kJnae2tzcag29JPKkNupODg9W6n8hVuEly8i05p8Y/yyNPvoIgqw2UqMf3pAAT+ZzRR9LSU9g5Jb80GSXFzcEh1RIv4Qcmt0rJT7M2onwSi4FaYnQDY1lcFSuBtPWtrYhC542EmMZUngkdqzOWnocn0ZTQqWIZNw7Z7UFQthTTFF5pFpckiS3j57gYNZ6xrY+ctL5Fkv4aeA77C6uoDnP7N8j8jS6wv8bGr1CfVE+JcW67ZfDdsfvAqSfesdYtMNafgR6/JqN5CYoUtYx6kFv8AFNxTEvbDXXhiv8NTzaXE9nrIZ4dxaKYAnbnqp9BnpTvUTOR8sYMza8s9/ZTQmINDcAJjjBGAK5znT/cp7+UM4tsio5uCdvyEdKJeO2Kf9jO4vYIg6xF5Z1XIx0z6Zq0k2WpZ5SO8v4RuvrMzz7hveIjB9Thj+lFWOXW0/wDJp0mlp6G9rqlm7gyxYwOjxciga0+0Lc3rphsOu+JIUh02VowP9xwoB+3Wm/HSFvDpbdG0hlu3VrkhAPkRDwKZMOmuQG1K6M54Nrgop2+op1YtPaQKvaNoZiq7WPHvTobS0xdLYTGykfNj6Gny0LYwdmf5cBM46cmtT7EpaNniX4bYe3fvmic9aKT7F7RYfbJ19jSOI3ZzQjrt4HcsTUcJkVFGQ9iw/wDGhcl7KtGCvyFif4gKrXRaYHLpNvNnxIEUnuoI/pS3gl/AxZqXyCSfh9WP7Ld9GFJr0r+Bi9RryDy/h/CGMwjaeuOlKr01phr1CItdK+CBEUO0HsCR+lKrBT8hvMqLurgYK49KD2tFckYfDvIx9PeiWJsv3EgiK2WPHPNGsSAeRsJUK3lOQf4qNRPgDbN1DAAMuVpykW2bxkgcdKbIDLiPnnzA+oolJWywiTun5UXGfwVth8fyxfz1oXgWFP8AIf5qYxfyBP8AKP5P70qvIxFV+RfvVfBZZetWyyT8woCFz2oiIq1UiEGoRAdx1P0pNhoXydazsYiE6mqIc9Uy0ZiqnyEwuL5BT0KNVo14BCE6CjQJotECz//Z"
     },
     {
-        "id": 4,
-        "name": "palt",
-        "people": 4,
+        "name": "Pasta",
+        "people": "4",
         "instructions": [
-            "Stek löken och köttet", 
-            "Häll på vatten och tillsätt fond", 
-            "Krydda efter behag!"
+            "Koka pasta",
+            "Ät pasta"
         ],
-        "ingredients":
-        [
-         {
-             "name":"lök",
-             "units": 1,
-             "measuringUnit": "st",
-             "unitEquivalentInGrams": 40
-        },
-        {
-            "name": "högrev",
-            "units": 300,
-            "measuringUnit": "g",
-            "unitEquivalentInGrams":300
-        },
-        {
-            "name":"köttfond",
-            "units":2,
-            "measuringUnit":"msk",
-            "unitEquivalentInGrams":20
-        },
-        {
-            "name":"vatten",
-            "units":500,
-            "measuringUnit":"ml",
-            "unitEquivalentInGrams": 500
-        }
-
+        "ingredients": [
+            {
+                "name": "Köttfärssås o spaghetti",
+                "unit": "10",
+                "measuringUnit": "dl",
+                "unitEquivalentInGrams": "300",
+                "unitPerPerson": 75
+            }
         ],
-        "category": "huvudrätt",
-        "urlToImage": "https://files.hemmets.se/uploads/2017/12/Pasta-med-rostad-kalrot-och-apelsin-1.jpg"
-    },
-    {
-        "id": 5,
-        "name": "pannbiff",
-        "people": 4,
-        "instructions": [
-            "Stek löken och köttet", 
-            "Häll på vatten och tillsätt fond", 
-            "Krydda efter behag!"
-        ],
-        "ingredients":
-        [
-         {
-             "name":"lök",
-             "units": 1,
-             "measuringUnit": "st",
-             "unitEquivalentInGrams": 40
-        },
-        {
-            "name": "högrev",
-            "units": 300,
-            "measuringUnit": "g",
-            "unitEquivalentInGrams":300
-        },
-        {
-            "name":"köttfond",
-            "units":2,
-            "measuringUnit":"msk",
-            "unitEquivalentInGrams":20
-        },
-        {
-            "name":"vatten",
-            "units":500,
-            "measuringUnit":"ml",
-            "unitEquivalentInGrams": 500
-        }
-
-        ],
-        "category": "huvudrätt",
-        "urlToImage": "https://files.hemmets.se/uploads/2017/12/Pasta-med-rostad-kalrot-och-apelsin-1.jpg"
+        "category": "Efterrätt",
+        "urlToImage": "https://img.koket.se/media/pasta-alla-siciliana.jpg"
     }
-
 ]

@@ -1,13 +1,13 @@
 class AddRecipe {
-    constructor(name, instructions, ingredients, url) {
-        let name = name;
-        let people = people;
-        let instructions = [];
-        let ingredients = [];
-        let url = url;
+    constructor(name, people, instructions, ingredients, url) {
+        this.name = name;
+        this.people = people;
+        this.instructions = instructions;
+        this.ingredients = ingredients;
+        this.url = url;
     }
-
-    set name(name) {
+/* 
+     set name(name) {
         this.name = name;
     }
     set instructions(instructions) {
@@ -24,6 +24,6 @@ class AddRecipe {
 
     set url(url){
         this.url=url;
-    }
-
+    }  */
+ 
 }
