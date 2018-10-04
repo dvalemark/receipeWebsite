@@ -112,30 +112,21 @@ module.exports = class Routes {
 
     //post
     this.app.post(
-      '/addrecipe/:recipe',
+      '/addrecipe',
       async (req, res) => {
-
-        let value = req.body.recipe;
-        console.log(value); 
+          console.log(req);
+        
         var fs = require('fs');
-
+        var addJson= JSON.parse(req);
         const jsonFile = 'C:/Users/disav/Documents/JavaScript/YummyTummy/receipeWebsite/json/recipe.json';
 
 
         fs.readFile(jsonFile, function (err, data) {
           var json = JSON.parse(data)
-          json.push(value);
+          json = json.push(req);
 
           fs.writeFile(jsonFile, JSON.stringify(json))
         })
-
-        /*  let data = JSON.stringify(value);
-         console.log(data);
-         await fs.appendFile(
-           'C:/Users/disav/Documents/JavaScript/YummyTummy/receipeWebsite/json/recipe.json',
-           JSON.stringify(data, null, '  '),
-           'utf-8'
-         ); */
 
         res.json({ saved: true });
       }

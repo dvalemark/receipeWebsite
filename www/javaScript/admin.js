@@ -1,25 +1,25 @@
 let recipeName;
 let recipePeople;
-let instructionArray=[];
-let ingredientArray= [];
+let instructionArray = [];
+let ingredientArray = [];
 let imageUrl;
 let recipeNew;
 
 ///NAME
-function addName(){
-    recipeName =$('#recipeName').val();
+function addName() {
+    recipeName = $('#recipeName').val();
     console.log(recipeName);
 }
 
 //ADD PEOPLE
-function addPeople(){
-    recipePeople=$('#nbrPeople').val();
+function addPeople() {
+    recipePeople = $('#nbrPeople').val();
     console.log(recipePeople);
 }
 
 
 //INSTRUCTIONSPART OF FORM
-$('#addInstruction').click(function(){
+$('#addInstruction').click(function () {
     let instruction = $('#instruction').val();
     instructionArray = instructionArray.concat(instruction);
     console.log(instructionArray);
@@ -56,49 +56,61 @@ $("#ingredientAc").click(function (event) {
     $('#ingredientAc').empty();
 });
 
-$('#measurementSelector').on("change",function(){
-    if($(this).val()==="g"){
-    $('#ammountGram').val($('#ingredientAmmount').val());
-}
+$('#measurementSelector').on("change", function () {
+    if ($(this).val() === "g") {
+        $('#ammountGram').val($('#ingredientAmmount').val());
+    }
 })
 
 ////////////////////////ADDING INGREDIENTS/////////////////
-$('#addIngredient').click(function(){
+$('#addIngredient').click(function () {
     let name = $('#ingredientName').val();
     let unit = $('#ingredientAmmount').val();
-    let measuringUnit =$('#measurementSelector').val();
-    let unitEquivalentInGrams =$('#ammountGram').val();
-    
+    let measuringUnit = $('#measurementSelector').val();
+    let unitEquivalentInGrams = $('#ammountGram').val();
+
     ingredientArray = ingredientArray.concat(new Ingredient(name, unit, measuringUnit, unitEquivalentInGrams));
     console.log(ingredientArray);
     $('#ingredientsAdded').append(`<li>${name} ${unit}${measuringUnit} mängd i gram: ${unitEquivalentInGrams}</li>`);
-   emptyIngredient();
+    emptyIngredient();
 });
 
-function emptyIngredient(){
+function emptyIngredient() {
     $('#ingredientName').val('');
     $('#ingredientAmmount').val('');
-    $('#measurementSelector').prop('selectedIndex',0);
+    $('#measurementSelector').prop('selectedIndex', 0);
     $('#ammountGram').val('');
 }
 
 
 ///////URL ADDING
-$('#addImageUrl').click(function(){
-    imageUrl= $('#imageUrl').val();
+$('#addImageUrl').click(function () {
+    imageUrl = $('#imageUrl').val();
 })
 
 ///SEND RECIPE
 
-$('#addRecipe').click(function(){
-    let newRecipe= new AddRecipe(recipeName, recipePeople, instructionArray,ingredientArray,imageUrl);
-    addRecipe(newRecipe);
+$('#addRecipe').click(function () {
+    let newRecipe = new AddRecipe(recipeName, recipePeople, instructionArray, ingredientArray, imageUrl);
+    addRes(newRecipe);
 })
 
- function addRecipe(recipe){
-     //let va =JSON.stringify(recipe);
-     //console.log(va);   
-    $.post('http://localhost:3000/addrecipe/' + recipe, (data) => {
-        
-    }); 
-} 
+/* function addRecipe(recipe) {
+    let va = JSON.stringify(recipe);
+    console.log(va);
+    $.post('http://localhost:3000/addrecipe/' + va, (data) => {
+        console.log(data);
+    });
+} */
+
+function addRes(recipe) {
+    $.ajax({
+        url: 'http://localhost:3000/addrecipe',
+        type: 'POST',
+        contentType: 'application/json',
+        data: recipe,
+        success: function (res) {
+            console.log(res)
+        }
+    })
+}

@@ -2,6 +2,9 @@
 const express = require('express');
 // Create a new web server
 const app = express();
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 // Tell the web server to serve files
 // from the www folder
 app.use(express.static('www'));
