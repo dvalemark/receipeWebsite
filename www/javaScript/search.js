@@ -221,21 +221,16 @@ $('#search-result').on('change', '#changePeople', function () {
     let newPeople = $('#changePeople').val();
     console.log(newPeople, "chosenVal");
     //$( "#myselect option:selected" ).text();
-    
+
 
     let change = + parseFloat((parseFloat(newPeople) / parseFloat(peopleCalc)));
-    peopleCalc=newPeople;
-    console.log(change, "change")
+    peopleCalc = newPeople;
+
     $('#ingredientsTable tr').each(function () {
         $(this).find('#measurementCalc').each(function () {
-            console.log(typeof (change));
             let currentMeasurement = parseFloat($(this).text());
-            console.log(currentMeasurement);
-            console.log(typeof(currentMeasurement));
-            let newMeasurement = +(currentMeasurement*change).toFixed(1);
-            console.log(newMeasurement);
-            console.log(typeof(newMeasurement));
-            newMeasurement= newMeasurement.toString();
+            let newMeasurement = parseFloat((Math.ceil((currentMeasurement * change) * 2) / 2).toFixed(2))
+            newMeasurement = newMeasurement.toString();
             $(this).text(newMeasurement.replace((".", ",")));
         })
 
