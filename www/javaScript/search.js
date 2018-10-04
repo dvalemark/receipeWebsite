@@ -61,8 +61,8 @@ $("#kategorier").click(function (event) {
 
 function filterCategories(category) {
     emptyNutrients();
-    
-    
+
+
     $.get('http://localhost:3000/recipes-by-category/' + category, (data) => {
         $('#search-result').empty();
         data.forEach(listRecipes);
@@ -78,6 +78,7 @@ $('#search-result').click(function (event) {
         getRecipeDescription(target.text());
     }
 });
+
 //SHOW RECIPE WHEN CLICKED
 function getRecipeDescription(recipeName) {
     $.get('http://localhost:3000/recipeslist/' + recipeName, (data) => {
@@ -87,6 +88,8 @@ function getRecipeDescription(recipeName) {
         findingNutrition(data.ingredients);
     });
 }
+///used to recalc the recipe
+let peopleCalc;
 
 function displayRecipe(recipeName) {
     let display = $('<section></section>');
@@ -97,18 +100,40 @@ function displayRecipe(recipeName) {
     title.text(recipeName.name);
     display.append(title);
 
-    let people = $(`<div class=row><p>Antal personer: </p><input type="number" id="changePeople" value=${recipeName.people}></div>`)
+    peopleCalc = recipeName.people;
+    let people = $(`<select id="changePeople">
+    <option selected value="${recipeName.people}">${recipeName.people}</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="4">4</option>
+    <option value="8">8</option>
+  </select>`)
     display.append(people);
 
-    let ingredientUlList = $('<ul></ul>');
-    display.append(ingredientUlList);
+
+    let ingredientTable = $('<table id="ingredientsTable"></table>');
+    let tableHead = $(`<thead>
+    <tr>
+      <th scope="col">Namn</th>
+      <th scope="col">Antal</th>
+      <th scope="col">Enhet</th>
+    </tr>
+  </thead>`)
+    ingredientTable.append(tableHead);
+    let tableBody = $(`<tbody></tbody`)
+
+
 
     recipeName.ingredients.forEach((ingredient) => {
-        let ingredientLi = $('<li></li>');
-        let content= $(`<div><p>${ingredient.name}</p><p id="ammountChange">${ingredient.unit}</p><p>${ingredient.measuringUnit}</p></div>`)
-        ingredientLi.append(content);
-        ingredientUlList.append(ingredientLi);
+        let ingredientLi = $(`<tr>
+        <td>${ingredient.name}</td>
+        <td id="measurementCalc">${ingredient.unit}</td>
+        <td>${ingredient.measuringUnit}</td>
+      </tr>`);
+        tableBody.append(ingredientLi);
     })
+    ingredientTable.append(tableBody);
+    display.append(ingredientTable);
 
     let instructionsOlList = $('<ol></ol>');
     display.append(instructionsOlList);
@@ -120,9 +145,9 @@ function displayRecipe(recipeName) {
 
     let imageDisplay = $('<div></div>')
     display.append(imageDisplay);
-    let image= $(`<img src="${recipeName.urlToImage}" class="img-thumbnail">`)
+    let image = $(`<img src="${recipeName.urlToImage}" class="img-thumbnail">`)
     imageDisplay.append(image);
-    
+
 
 }
 
@@ -137,61 +162,82 @@ function findingNutrition(ingredient) {
 
 function getNutrition(ingredient) {
     $.get('http://localhost:3000/ingredients/' + ingredient.name, (data) => {
-        
+
         calculationNutrition(data, ingredient);
     });
 }
 
-const findNutrient = nutrientName=> (nutrient) => nutrient.Namn.toLowerCase().includes(nutrientName);
+const findNutrient = nutrientName => (nutrient) => nutrient.Namn.toLowerCase().includes(nutrientName);
 
-//CALCULATIONS
-function calculationNutrition(nutrition, ingredient){
+//CALCULATIONS NUTRITION
+function calculationNutrition(nutrition, ingredient) {
     let kolesterol = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("kolesterol"));
     let energi = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("energi"));
     let kolhydrat = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("kolhydrat"));
 
-    let multiplyToGetNutrition =parseFloat((ingredient.unitPerPerson/100).toFixed(2))
+    let multiplyToGetNutrition = parseFloat((ingredient.unitPerPerson / 100).toFixed(2))
     displayCarbohydrates(kolhydrat.Varde, multiplyToGetNutrition);
     displayCholesterol(kolesterol.Varde, multiplyToGetNutrition);
     displayEnergy(energi.Varde, multiplyToGetNutrition);
 }
 
-function displayCarbohydrates(carb, multiply){
-    
-     prevSum =$('#sumKolhydrat').text();
-     
-   
-   let sum = +((parseFloat(prevSum) + ((parseFloat(carb))*multiply))).toFixed(2);
-    
+function displayCarbohydrates(carb, multiply) {
+
+    prevSum = $('#sumKolhydrat').text();
+
+    let sum = +((parseFloat(prevSum) + ((parseFloat(carb)) * multiply))).toFixed(2);
+
     sum = sum.toString();
-   
-    $('#sumKolhydrat').text(sum.replace(".",","));
+
+    $('#sumKolhydrat').text(sum.replace(".", ","));
 }
 
-function displayCholesterol(chol, multiply){
-    
-    let prevSum =$('#sumKolesterol').text();
+function displayCholesterol(chol, multiply) {
+
+    let prevSum = $('#sumKolesterol').text();
     console.log(chol);
-    let sum = +((parseFloat(prevSum) + ((parseFloat(chol))*multiply))).toFixed(2);
+    let sum = +((parseFloat(prevSum) + ((parseFloat(chol)) * multiply))).toFixed(2);
     sum = sum.toString();
     $('#sumKolesterol').text((sum.replace(".", ",")));
 }
 
-function displayEnergy(ener, multiply){
-    let prevSum= $('#sumEnergi').text();
+function displayEnergy(ener, multiply) {
+    let prevSum = $('#sumEnergi').text();
     console.log(ener);
-    let sum = +((parseFloat(prevSum) + ((parseFloat(ener))*multiply))).toFixed(2);
+    let sum = +((parseFloat(prevSum) + ((parseFloat(ener)) * multiply))).toFixed(2);
     sum = sum.toString();
     $('#sumEnergi').text(sum.replace((".", ",")));
 }
 
-function emptyNutrients(){
+function emptyNutrients() {
     $('#sumEnergi').text(0);
     $('#sumKolesterol').text(0);
     $('#sumKolhydrat').text(0);
 }
 
 ///////////CALC PORTIONS
-$('#changePeople').on( "change", function(){
+$('#search-result').on('change', '#changePeople', function () {
+    console.log("klick!!!!!");
+    let newPeople = $('#changePeople').val();
+    console.log(newPeople, "chosenVal");
+    //$( "#myselect option:selected" ).text();
+    
 
+    let change = + parseFloat((parseFloat(newPeople) / parseFloat(peopleCalc)));
+    peopleCalc=newPeople;
+    console.log(change, "change")
+    $('#ingredientsTable tr').each(function () {
+        $(this).find('#measurementCalc').each(function () {
+            console.log(typeof (change));
+            let currentMeasurement = parseFloat($(this).text());
+            console.log(currentMeasurement);
+            console.log(typeof(currentMeasurement));
+            let newMeasurement = +(currentMeasurement*change).toFixed(1);
+            console.log(newMeasurement);
+            console.log(typeof(newMeasurement));
+            newMeasurement= newMeasurement.toString();
+            $(this).text(newMeasurement.replace((".", ",")));
+        })
+
+    })
 })

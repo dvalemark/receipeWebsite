@@ -83,7 +83,7 @@ $('#addIngredient').click(function () {
         alert("Då måste fylla i alla ingrediensfälten!")
     }
     else {
-        // ingredientArray = ingredientArray.concat(new Ingredient(name, unit, measuringUnit, unitEquivalentInGrams));
+ 
         ingredientArray = ingredientArray.concat({
             name: name,
             unit: unit,
