@@ -2,6 +2,7 @@
 $('#search-button').click(() => {
     let searchValue = $('#search-value').val();
     getRecipes(searchValue);
+    emptyNutrients();
 })
 
 $('#search-value').keyup(function () {
@@ -51,14 +52,17 @@ function listAc(recipe) {
 $("#kategorier").click(function (event) {
     var target = $(event.target);
     if (target.is("a")) {
-        console.log(target.text())
+        $('#search-value').val("");
         filterCategories(target.text());
     }
+
 });
 
 
 function filterCategories(category) {
-    console.log(category);
+    emptyNutrients();
+    
+    
     $.get('http://localhost:3000/recipes-by-category/' + category, (data) => {
         $('#search-result').empty();
         data.forEach(listRecipes);
@@ -93,7 +97,7 @@ function displayRecipe(recipeName) {
     title.text(recipeName.name);
     display.append(title);
 
-    let people = $(`<div class=row><p>Antal personer: </p><p>${recipeName.people}</p></div>`)
+    let people = $(`<div class=row><p>Antal personer: </p><input type="number" id="changePeople" value=${recipeName.people}></div>`)
     display.append(people);
 
     let ingredientUlList = $('<ul></ul>');
@@ -101,7 +105,8 @@ function displayRecipe(recipeName) {
 
     recipeName.ingredients.forEach((ingredient) => {
         let ingredientLi = $('<li></li>');
-        ingredientLi.text(ingredient.name + ' ' + ingredient.units + ' ' + ingredient.measuringUnit);
+        let content= $(`<div><p>${ingredient.name}</p><p id="ammountChange">${ingredient.unit}</p><p>${ingredient.measuringUnit}</p></div>`)
+        ingredientLi.append(content);
         ingredientUlList.append(ingredientLi);
     })
 
@@ -125,53 +130,68 @@ function displayRecipe(recipeName) {
 
 function findingNutrition(ingredient) {
     ingredient.forEach((ing) => {
-        getNutrition(ing.name);
+        getNutrition(ing);
     }
     )
 }
 
 function getNutrition(ingredient) {
-    console.log(ingredient);
-
-    $.get('http://localhost:3000/ingredients/' + ingredient, (data) => {
-        console.log(data);
-        //displayingNutrition(data);
-        calculationNutrition(data);
+    $.get('http://localhost:3000/ingredients/' + ingredient.name, (data) => {
+        
+        calculationNutrition(data, ingredient);
     });
 }
 
 const findNutrient = nutrientName=> (nutrient) => nutrient.Namn.toLowerCase().includes(nutrientName);
 
 //CALCULATIONS
-function calculationNutrition(nutrition){
+function calculationNutrition(nutrition, ingredient){
     let kolesterol = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("kolesterol"));
     let energi = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("energi"));
-    let kolhydrat = nutrition.Naringsvarden.Naringsvarde.find(findutrient("kolhydrat"));
-    console.log(kolhydrat.Varde);
-    displayCarbohydrates(kolhydrat.Varde);
-    displayCholesterol(kolesterol.Varde);
-    displayEnergy(energi.Varde);
+    let kolhydrat = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("kolhydrat"));
+
+    let multiplyToGetNutrition =parseFloat((ingredient.unitPerPerson/100).toFixed(2))
+    displayCarbohydrates(kolhydrat.Varde, multiplyToGetNutrition);
+    displayCholesterol(kolesterol.Varde, multiplyToGetNutrition);
+    displayEnergy(energi.Varde, multiplyToGetNutrition);
 }
 
-function displayCarbohydrates(carb){
-    let prevSum =$('#sumKolhydrater').text();
-    let sum = (parseFloat(prevSum) + parseFloat(carb)).toFixed(2);
-    $('#sumKolhydrater').text(sum);
+function displayCarbohydrates(carb, multiply){
+    
+     prevSum =$('#sumKolhydrat').text();
+     
+   
+   let sum = +((parseFloat(prevSum) + ((parseFloat(carb))*multiply))).toFixed(2);
+    
+    sum = sum.toString();
+   
+    $('#sumKolhydrat').text(sum.replace(".",","));
 }
 
-function displayCholesterol(chol){
+function displayCholesterol(chol, multiply){
+    
     let prevSum =$('#sumKolesterol').text();
-    let sum = parseFloat(prevSum) + parseFloat(chol);
-    $('#sumKolesterol').text(sum);
+    console.log(chol);
+    let sum = +((parseFloat(prevSum) + ((parseFloat(chol))*multiply))).toFixed(2);
+    sum = sum.toString();
+    $('#sumKolesterol').text((sum.replace(".", ",")));
 }
 
-function displayEnergy(ener){
-    let prevSum =$('#sumEnergi').text();
-    let sum = parseFloat(prevSum) + parseFloat(ener);
-    $('#sumEnergi').text(sum);
+function displayEnergy(ener, multiply){
+    let prevSum= $('#sumEnergi').text();
+    console.log(ener);
+    let sum = +((parseFloat(prevSum) + ((parseFloat(ener))*multiply))).toFixed(2);
+    sum = sum.toString();
+    $('#sumEnergi').text(sum.replace((".", ",")));
 }
 
-function displayingNutrition() {
-    console.log("displaying nutrition");
-
+function emptyNutrients(){
+    $('#sumEnergi').text(0);
+    $('#sumKolesterol').text(0);
+    $('#sumKolhydrat').text(0);
 }
+
+///////////CALC PORTIONS
+$('#changePeople').on( "change", function(){
+
+})

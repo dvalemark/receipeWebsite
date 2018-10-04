@@ -40,7 +40,7 @@ module.exports = class Routes {
 
         let ingredientDb = require('../json/livsmedelsdata.json') || [];
 
-        let result = ingredientDb.find((ing) => ing.Namn.toLowerCase()===ingredients);
+        let result = ingredientDb.find((ing) => ing.Namn.toLowerCase().includes(ingredients));
 
         res.json(result);
 
