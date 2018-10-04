@@ -9,8 +9,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // from the www folder
 app.use(express.static('www'));
 // Start the web server on port 3000
-app.use(express.json({extended: true}));
-app.use(express.urlencoded({extended: true}));
+//app.use(express.json({extended: true}));
+//app.use(express.urlencoded({extended: true}));
 
 
 app.listen(3000,() => console.log('Listening on port 3000'));

@@ -14,30 +14,41 @@
 </head>
 
 <body>
-  <form>
+  <form id="recipeForm" action=" ">
     <div class="form-group">
       <label for="formGroupExampleInput">Receptnamn</label>
-      <input type="text" class="form-control" id="recipeName" onfocusout="addName()" placeholder="Skriv namnet här...">
+      <input type="text" name="name" required class="form-control" id="recipeName" onfocusout="addName()" placeholder="Skriv namnet här...">
     </div>
     <div class="form-group">
         <label for="formGroupExampleInput">Antal personer</label>
-        <input type="text" class="form-control" id="nbrPeople" onfocusout="addPeople()" placeholder="Skriv antalet personer här...">
+        <input type="number" pattern="[0-9]" name ="people" class="form-control" id="nbrPeople" onfocusout="addPeople()" placeholder="Skriv antalet personer här..." >
+      </div>
+      <div class="col">
+        <select class="custom-select" id="categoryPicker">
+          <option selected value="0" hidden name="category">Välj kategori</option>
+          <option value="Förrätt">Förrätt</option>
+          <option value="Huvudrätt">Huvudrätt</option>
+          <option value="Efterrätt">Efterrätt</option>
+        </select>
       </div>
     <div class="form-row">
-      <div class="col-5" id)>
-        <ol id="instructionsAdded"></ol>
+      <div class="col-5" >
+        <ol id="instructionsAdded" name="instructions"></ol>
       </div>
     </div>
     <div class="form-group">
+      <form id= instructionsForm>
       <label for="formGroupExampleInput2">Instruktioner</label>
       <input type="text" class="form-control" id="instruction" placeholder="Skriv in instruktionerna steg för steg">
       <button type="button" id="addInstruction">Nytt steg</button>
+    </form>
     </div>
-    <div class="form-row">
+    <div class="form-row" >
       <div class="col-5" id)>
-        <ul id="ingredientsAdded"></ul>
+        <ul id="ingredientsAdded" name="ingredients"required></ul>
       </div>
     </div>
+    <form id= "ingredientsForm">
     <div class="form-row" id="ingredients">
       <div class="col-5">
         <ul>
@@ -46,7 +57,7 @@
         </ul>
       </div>
       <div class="col">
-        <input type="text" class="form-control" id="ingredientAmmount" placeholder="Mängd">
+        <input type="number" class="form-control" id="ingredientAmmount" placeholder="Mängd">
       </div>
       <div class="col">
         <select class="custom-select" id="measurementSelector">
@@ -58,17 +69,18 @@
         </select>
       </div>
       <div class="col">
-        <input type="text" class="form-control" placeholder="Mängd i gram" id="ammountGram">
+        <input type="number" class="form-control" placeholder="Mängd i gram" id="ammountGram">
       </div>
       <button type="button" id="addIngredient">Ny ingrediens</button>
     </div>
+  </form>
     <div class="form-group">
       <label for="formGroupExampleInput2">Url till Bild</label>
-      <input type="text" class="form-control" id="imageUrl" placeholder="Skriv in bildUrl">
+      <input type="text" name="url" class="form-control" id="imageUrl" placeholder="Skriv in bildUrl" required >
       <button type="button" id="addImageUrl">Lägg till bild</button>
     </div>
   </form>
-  <button type="button" id="addRecipe"> Lägg till recept!</button>
+  <input type="submit" value="submit" id="addRecipe" placeholder="Lägg till recept!">
 
   <footer>
 
@@ -76,6 +88,7 @@
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
+   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"

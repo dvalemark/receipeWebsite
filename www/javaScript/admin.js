@@ -1,5 +1,6 @@
 let recipeName;
 let recipePeople;
+let category;
 let instructionArray = [];
 let ingredientArray = [];
 let imageUrl;
@@ -8,30 +9,40 @@ let recipeNew;
 ///NAME
 function addName() {
     recipeName = $('#recipeName').val();
-    console.log(recipeName);
+    
 }
 
 //ADD PEOPLE
 function addPeople() {
     recipePeople = $('#nbrPeople').val();
-    console.log(recipePeople);
+    
 }
+//ADD category
+$('#categoryPicker').on("change", function () {
 
+    category = $('#categoryPicker').val();
+
+})
 
 //INSTRUCTIONSPART OF FORM
 $('#addInstruction').click(function () {
     let instruction = $('#instruction').val();
-    instructionArray = instructionArray.concat(instruction);
-    console.log(instructionArray);
-    console.log("hej");
-    $('#instructionsAdded').append(`<li>${instruction}</li>`);
+    if (instruction == "") {
+        alert("Du måste skriva något i instruktionsrutan")
+    }
+    else {
+        $('#instruction').val("")
+        instructionArray = instructionArray.concat(instruction);
+        console.log(instructionArray);
+        $('#instructionsAdded').append(`<li>${instruction}</li>`);
+    }
 })
 
 //INGREDIENTS PART OF FORM
 $('#ingredientName').keyup(function () {
     let searchValue = $('#ingredientName').val();
     $('#ingredientAc').empty();
-    console.log(searchValue);
+    
     if (searchValue.length > 1) {
         getAutocomplete(searchValue);
     }
@@ -68,11 +79,23 @@ $('#addIngredient').click(function () {
     let unit = $('#ingredientAmmount').val();
     let measuringUnit = $('#measurementSelector').val();
     let unitEquivalentInGrams = $('#ammountGram').val();
+    if (name == "" || unit == "" || measuringUnit == "" || unitEquivalentInGrams == "") {
+        alert("Då måste fylla i alla ingrediensfälten!")
+    }
+    else {
+        // ingredientArray = ingredientArray.concat(new Ingredient(name, unit, measuringUnit, unitEquivalentInGrams));
+        ingredientArray = ingredientArray.concat({
+            name: name,
+            unit: unit,
+            measuringUnit: measuringUnit,
+            unitEquivalentInGrams: unitEquivalentInGrams,
+            unitPerPerson: unitEquivalentInGrams / recipePeople
+        });
 
-    ingredientArray = ingredientArray.concat(new Ingredient(name, unit, measuringUnit, unitEquivalentInGrams));
-    console.log(ingredientArray);
-    $('#ingredientsAdded').append(`<li>${name} ${unit}${measuringUnit} mängd i gram: ${unitEquivalentInGrams}</li>`);
-    emptyIngredient();
+        
+        $('#ingredientsAdded').append(`<li>${name} ${unit}${measuringUnit} mängd i gram: ${unitEquivalentInGrams}</li>`);
+        emptyIngredient();
+    }
 });
 
 function emptyIngredient() {
@@ -86,31 +109,80 @@ function emptyIngredient() {
 ///////URL ADDING
 $('#addImageUrl').click(function () {
     imageUrl = $('#imageUrl').val();
+    alert("Bild tillagd!")
+
 })
+
+///validate
+$('#addRecipe').click(function (e) {
+    e.preventDefault();
+    let name = $('#recipeName').val();
+    let people = $('#nbrPeople').val();
+    let category = $('#catgoryPicker').val();
+    let instructions = $('#instructionsAdded li').val();
+    let ingredients = $('#ingredientsAdded li').val();
+    let imageUrl = $('#imageUrl').val();
+
+    $(".error").remove();
+    if (name === "") {
+        alert('Du måste fylla i receptnamn!');
+    }
+    if (people === "") {
+        alert('Du måste fylla i antal personer!')
+
+    }
+    if (category === "") {
+        alert("Du måste välja kategori");
+    }
+    if (instructions === undefined) {
+        alert("Du måste lägga till instruktioner")
+    }
+    if (ingredients === undefined) {
+        alert("Du måste lägga till ingredienser!")
+    }
+    if (imageUrl === "") {
+        alert("Du måste lägga till en bild-url!")
+    }
+    else (postRecipe());
+});
+
 
 ///SEND RECIPE
 
-$('#addRecipe').click(function () {
-    let newRecipe = new AddRecipe(recipeName, recipePeople, instructionArray, ingredientArray, imageUrl);
+function postRecipe() {
+    //  let newRecipe = new AddRecipe(recipeName, recipePeople, instructionArray, ingredientArray, imageUrl);
+    
+    let newRecipe = {
+        name: recipeName,
+        people: recipePeople,
+        instructions: instructionArray,
+        ingredients: ingredientArray,
+        category: category,
+        urlToImage: imageUrl
+    };
+    
     addRes(newRecipe);
-})
-
-/* function addRecipe(recipe) {
-    let va = JSON.stringify(recipe);
-    console.log(va);
-    $.post('http://localhost:3000/addrecipe/' + va, (data) => {
-        console.log(data);
-    });
-} */
+}
 
 function addRes(recipe) {
+
     $.ajax({
         url: 'http://localhost:3000/addrecipe',
         type: 'POST',
         contentType: 'application/json',
-        data: recipe,
+        data: JSON.stringify(recipe),
         success: function (res) {
-            console.log(res)
+            alert("Receptet är tillagt")
+            emptyForm();
         }
     })
+}
+
+function emptyForm() {
+    $('#recipeName').val('');
+    $('#nbrPeople').val('');
+    $('#measurementSelector').prop('selectedIndex', 0);
+    $('#imageUrl').val('');
+    $('#instructionsAdded').empty();
+    $('#ingredientsAdded').empty();
 }

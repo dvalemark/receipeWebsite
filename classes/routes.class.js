@@ -40,7 +40,7 @@ module.exports = class Routes {
 
         let ingredientDb = require('../json/livsmedelsdata.json') || [];
 
-        let result = ingredientDb.find((ing) => ing.Namn.toLowerCase().startsWith(ingredients));
+        let result = ingredientDb.find((ing) => ing.Namn.toLowerCase()===ingredients);
 
         res.json(result);
 
@@ -114,21 +114,21 @@ module.exports = class Routes {
     this.app.post(
       '/addrecipe',
       async (req, res) => {
-          console.log(req);
-        
         var fs = require('fs');
-        var addJson= JSON.parse(req);
+        var addJson= req.body;
         const jsonFile = 'C:/Users/disav/Documents/JavaScript/YummyTummy/receipeWebsite/json/recipe.json';
-
-
+        
         fs.readFile(jsonFile, function (err, data) {
-          var json = JSON.parse(data)
-          json = json.push(req);
+          var json = JSON.parse(data);
 
-          fs.writeFile(jsonFile, JSON.stringify(json))
+          json.push(addJson);
+
+          fs.writeFile(jsonFile, JSON.stringify(json, null, 4),"utf8",err=>{
+            if(err) {console.log(err)
+            alert("Receptet kunde int läggas till")};
+            res.json({ saved: true });
+          })
         })
-
-        res.json({ saved: true });
       }
       
       );
