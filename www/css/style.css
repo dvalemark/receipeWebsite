@@ -1,0 +1,3 @@
+a[href], input[type='submit'], select, button, .pointer{
+    cursor: pointer;
+}

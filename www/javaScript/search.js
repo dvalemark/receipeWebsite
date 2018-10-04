@@ -24,7 +24,7 @@ function getRecipes(searchValue) {
 }
 
 function listRecipes(recipe) {
-    $('#search-result').append(`<li class="searchResult" data-value="${recipe.name}">${recipe.name}</li>`);
+    $('#search-result').append(`<li class="list-group-item list-group-item-action" data-value="${recipe.name}">${recipe.name}</li>`);
 }
 
 //AutoComplete
@@ -96,6 +96,12 @@ function displayRecipe(recipeName) {
     display.addClass('display');
     $("#search-result").append(display);
 
+    let imageDisplay = $('<div></div>')
+    display.append(imageDisplay);
+    let image = $(`<img src="${recipeName.urlToImage}" class="imageRecipe">`)
+    imageDisplay.append(image);
+
+
     let title = $('<h4></h4>');
     title.text(recipeName.name);
     display.append(title);
@@ -136,18 +142,14 @@ function displayRecipe(recipeName) {
     display.append(ingredientTable);
 
     let instructionsOlList = $('<ol></ol>');
+    let instTitle= $('<h5>Instruktioner</h5>');
+    instructionsOlList.prepend(instTitle);
     display.append(instructionsOlList);
     recipeName.instructions.forEach((instruction) => {
         let instructionLi = $('<li></li>');
         instructionLi.text(instruction);
         instructionsOlList.append(instructionLi);
     })
-
-    let imageDisplay = $('<div></div>')
-    display.append(imageDisplay);
-    let image = $(`<img src="${recipeName.urlToImage}" class="img-thumbnail">`)
-    imageDisplay.append(image);
-
 
 }
 
@@ -174,6 +176,7 @@ function calculationNutrition(nutrition, ingredient) {
     let kolesterol = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("kolesterol"));
     let energi = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("energi"));
     let kolhydrat = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("kolhydrat"));
+    
 
     let multiplyToGetNutrition = parseFloat((ingredient.unitPerPerson / 100).toFixed(2))
     displayCarbohydrates(kolhydrat.Varde, multiplyToGetNutrition);
@@ -182,31 +185,34 @@ function calculationNutrition(nutrition, ingredient) {
 }
 
 function displayCarbohydrates(carb, multiply) {
-
+    
     prevSum = $('#sumKolhydrat').text();
+   
 
-    let sum = +((parseFloat(prevSum) + ((parseFloat(carb)) * multiply))).toFixed(2);
+    let sum = +((parseFloat(prevSum) + ((parseFloat(carb)) * multiply)).toFixed(2));
 
     sum = sum.toString();
-
-    $('#sumKolhydrat').text(sum.replace(".", ","));
+    
+    $('#sumKolhydrat').text((sum.replace(".", ",")));
 }
 
 function displayCholesterol(chol, multiply) {
 
     let prevSum = $('#sumKolesterol').text();
-    console.log(chol);
-    let sum = +((parseFloat(prevSum) + ((parseFloat(chol)) * multiply))).toFixed(2);
+   
+    let sum = +((parseFloat(prevSum) + ((parseFloat(chol)) * multiply)).toFixed(2));
+   
     sum = sum.toString();
     $('#sumKolesterol').text((sum.replace(".", ",")));
 }
 
 function displayEnergy(ener, multiply) {
     let prevSum = $('#sumEnergi').text();
-    console.log(ener);
-    let sum = +((parseFloat(prevSum) + ((parseFloat(ener)) * multiply))).toFixed(2);
+    
+    let sum = +((parseFloat(prevSum) + ((parseFloat(ener)) * multiply)).toFixed(2));
+   
     sum = sum.toString();
-    $('#sumEnergi').text(sum.replace((".", ",")));
+    $('#sumEnergi').text((sum.replace(".", ",")));
 }
 
 function emptyNutrients() {
@@ -217,10 +223,9 @@ function emptyNutrients() {
 
 ///////////CALC PORTIONS
 $('#search-result').on('change', '#changePeople', function () {
-    console.log("klick!!!!!");
+    
     let newPeople = $('#changePeople').val();
-    console.log(newPeople, "chosenVal");
-    //$( "#myselect option:selected" ).text();
+    
 
 
     let change = + parseFloat((parseFloat(newPeople) / parseFloat(peopleCalc)));
@@ -229,7 +234,7 @@ $('#search-result').on('change', '#changePeople', function () {
     $('#ingredientsTable tr').each(function () {
         $(this).find('#measurementCalc').each(function () {
             let currentMeasurement = parseFloat($(this).text());
-            let newMeasurement = parseFloat((Math.ceil((currentMeasurement * change) * 2) / 2).toFixed(2))
+            let newMeasurement = parseFloat((Math.ceil((currentMeasurement * change) * 2) / 2).toFixed(2));
             newMeasurement = newMeasurement.toString();
             $(this).text(newMeasurement.replace((".", ",")));
         })

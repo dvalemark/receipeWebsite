@@ -33,7 +33,6 @@ $('#addInstruction').click(function () {
     else {
         $('#instruction').val("")
         instructionArray = instructionArray.concat(instruction);
-        console.log(instructionArray);
         $('#instructionsAdded').append(`<li>${instruction}</li>`);
     }
 })
@@ -150,7 +149,6 @@ $('#addRecipe').click(function (e) {
 ///SEND RECIPE
 
 function postRecipe() {
-    //  let newRecipe = new AddRecipe(recipeName, recipePeople, instructionArray, ingredientArray, imageUrl);
     
     let newRecipe = {
         name: recipeName,
@@ -178,6 +176,8 @@ function addRes(recipe) {
     })
 }
 
+
+///CLEAR FORM
 function emptyForm() {
     $('#recipeName').val('');
     $('#nbrPeople').val('');
