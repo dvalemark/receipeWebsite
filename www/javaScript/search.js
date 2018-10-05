@@ -176,14 +176,41 @@ function calculationNutrition(nutrition, ingredient) {
     let kolesterol = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("kolesterol"));
     let energi = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("energi"));
     let kolhydrat = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("kolhydrat"));
-    
-
+ /*    let fett = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("Fett"));
+    let fettMatt=nutrition.Naringsvarden.Naringsvarde.find(findNutrient("Summa mättade fettsyror"));
+    let fettOmatt=nutrition.Naringsvarden.Naringsvarde.find(findNutrient("Summa enkelomättade fettsyror"));
+    let fettFlero=nutrition.Naringsvarden.Naringsvarde.find(findNutrient("Summa fleromättade fettsyror"));
+ */
     let multiplyToGetNutrition = parseFloat((ingredient.unitPerPerson / 100).toFixed(2))
+    displayFat();
     displayCarbohydrates(kolhydrat.Varde, multiplyToGetNutrition);
     displayCholesterol(kolesterol.Varde, multiplyToGetNutrition);
     displayEnergy(energi.Varde, multiplyToGetNutrition);
 }
 
+/* function displayFat(fett, fettMatt, fettOmatt, fettFlero, multiply){
+    prevSumFett = $('#sumFett').text();
+    prevSumFettMatt = $('#sumMattade').text();
+    prevSumFettOmatt = $('#sumEnkel').text();
+    prevSumFettFlero = $('#sumFlero').text();
+   
+    let sum1 = +((parseFloat(prevSumFett) + ((parseFloat(fett)) * multiply)).toFixed(2));
+    sum1 = sum1.toString();
+    $('#sumFett').text((sum1.replace(".", ",")));
+
+    let sum2 = +((parseFloat(prevSumFettMatt) + ((parseFloat(fettMatt)) * multiply)).toFixed(2));
+    sum2 = sum2.toString();
+    $('#sumMattade').text((sum2.replace(".", ",")));
+
+    let sum3 = +((parseFloat(prevSumFettOmatt) + ((parseFloat(fettOmatt)) * multiply)).toFixed(2));
+    sum3 = sum3.toString();
+    $('#sumEnkel').text((sum3.replace(".", ",")));
+
+    let sum4 = +((parseFloat(prevSumFettFlero) + ((parseFloat(fettFlero)) * multiply)).toFixed(2));
+    sum4 = sum4.toString();
+    $('#sumEnkel').text((sum4.replace(".", ",")));
+}
+ */
 function displayCarbohydrates(carb, multiply) {
     
     prevSum = $('#sumKolhydrat').text();
