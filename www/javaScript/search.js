@@ -142,7 +142,7 @@ function displayRecipe(recipeName) {
     display.append(ingredientTable);
 
     let instructionsOlList = $('<ol></ol>');
-    let instTitle= $('<h5>Instruktioner</h5>');
+    let instTitle = $('<h5>Instruktioner</h5>');
     instructionsOlList.prepend(instTitle);
     display.append(instructionsOlList);
     recipeName.instructions.forEach((instruction) => {
@@ -176,24 +176,58 @@ function calculationNutrition(nutrition, ingredient) {
     let kolesterol = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("kolesterol"));
     let energi = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("energi"));
     let kolhydrat = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("kolhydrat"));
- /*    let fett = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("Fett"));
-    let fettMatt=nutrition.Naringsvarden.Naringsvarde.find(findNutrient("Summa mättade fettsyror"));
-    let fettOmatt=nutrition.Naringsvarden.Naringsvarde.find(findNutrient("Summa enkelomättade fettsyror"));
-    let fettFlero=nutrition.Naringsvarden.Naringsvarde.find(findNutrient("Summa fleromättade fettsyror"));
- */
+    let fett = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("fett"));
+    let fettMatt = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("summa mättade fettsyror"));
+    let fettOmatt = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("summa enkelomättade fettsyror"));
+    let fettFlero = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("summa fleromättade fettsyror"));
+    let sackaros = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("sackaros"));
+    let monoSac = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("monosackarider"));
+    let diSac = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("disackarider"));
+    let salt = nutrition.Naringsvarden.Naringsvarde.find(findNutrient("salt"));
+
     let multiplyToGetNutrition = parseFloat((ingredient.unitPerPerson / 100).toFixed(2))
-    displayFat();
+    displayFat(fett.Varde, fettMatt.Varde, fettOmatt.Varde, fettFlero.Varde, multiplyToGetNutrition);
+    displaySugar(sackaros.Varde, monoSac.Varde, diSac.Varde, multiplyToGetNutrition);
     displayCarbohydrates(kolhydrat.Varde, multiplyToGetNutrition);
     displayCholesterol(kolesterol.Varde, multiplyToGetNutrition);
     displayEnergy(energi.Varde, multiplyToGetNutrition);
+    displaySalt(salt.Varde, multiplyToGetNutrition);
 }
 
-/* function displayFat(fett, fettMatt, fettOmatt, fettFlero, multiply){
+function displaySalt(salt) {
+    prevSumSalt = $('#sumSalt').text();
+
+    let sum1 = +((parseFloat(prevSumSalt) + ((parseFloat(salt)) * multiply)).toFixed(2));
+    sum1 = sum1.toString();
+    $('#sumSalt').text((sum1.replace(".", ",")));
+
+}
+
+function displaySugar(sackaros, monoSac, diSac, multiply) {
+    prevSumSackaros = $('#sumSackaros').text();
+    prevSumMono = $('#sumMono').text();
+    prevSumDi = $('#sumDi').text();
+
+    let sum1 = +((parseFloat(prevSumSackaros) + ((parseFloat(sackaros)) * multiply)).toFixed(2));
+    sum1 = sum1.toString();
+    $('#sumSackaros').text((sum1.replace(".", ",")));
+
+    let sum2 = +((parseFloat(prevSumMono) + ((parseFloat(monoSac)) * multiply)).toFixed(2));
+    sum2 = sum2.toString();
+    $('#sumMono').text((sum2.replace(".", ",")));
+
+    let sum3 = +((parseFloat(prevSumDi) + ((parseFloat(diSac)) * multiply)).toFixed(2));
+    sum3 = sum3.toString();
+    $('#sumDi').text((sum3.replace(".", ",")));
+
+}
+
+function displayFat(fett, fettMatt, fettOmatt, fettFlero, multiply) {
     prevSumFett = $('#sumFett').text();
     prevSumFettMatt = $('#sumMattade').text();
     prevSumFettOmatt = $('#sumEnkel').text();
     prevSumFettFlero = $('#sumFlero').text();
-   
+
     let sum1 = +((parseFloat(prevSumFett) + ((parseFloat(fett)) * multiply)).toFixed(2));
     sum1 = sum1.toString();
     $('#sumFett').text((sum1.replace(".", ",")));
@@ -208,36 +242,36 @@ function calculationNutrition(nutrition, ingredient) {
 
     let sum4 = +((parseFloat(prevSumFettFlero) + ((parseFloat(fettFlero)) * multiply)).toFixed(2));
     sum4 = sum4.toString();
-    $('#sumEnkel').text((sum4.replace(".", ",")));
+    $('#sumFlero').text((sum4.replace(".", ",")));
 }
- */
+
 function displayCarbohydrates(carb, multiply) {
-    
+
     prevSum = $('#sumKolhydrat').text();
-   
+
 
     let sum = +((parseFloat(prevSum) + ((parseFloat(carb)) * multiply)).toFixed(2));
 
     sum = sum.toString();
-    
+
     $('#sumKolhydrat').text((sum.replace(".", ",")));
 }
 
 function displayCholesterol(chol, multiply) {
 
     let prevSum = $('#sumKolesterol').text();
-   
+
     let sum = +((parseFloat(prevSum) + ((parseFloat(chol)) * multiply)).toFixed(2));
-   
+
     sum = sum.toString();
     $('#sumKolesterol').text((sum.replace(".", ",")));
 }
 
 function displayEnergy(ener, multiply) {
     let prevSum = $('#sumEnergi').text();
-    
+
     let sum = +((parseFloat(prevSum) + ((parseFloat(ener)) * multiply)).toFixed(2));
-   
+
     sum = sum.toString();
     $('#sumEnergi').text((sum.replace(".", ",")));
 }
@@ -246,18 +280,23 @@ function emptyNutrients() {
     $('#sumEnergi').text(0);
     $('#sumKolesterol').text(0);
     $('#sumKolhydrat').text(0);
+    $('#sumFett').text(0);
+    $('#sumMattade').text(0);
+    $('#sumEnkel').text(0);
+    $('#sumFlero').text(0);
+    $('#sumSackaros').text(0);
+    $('#sumMono').text(0);
+    $('#sumDi').text(0);
+    $('#sumSalt').text(0);
 }
 
 ///////////CALC PORTIONS
 $('#search-result').on('change', '#changePeople', function () {
-    
-    let newPeople = $('#changePeople').val();
-    
 
+    let newPeople = $('#changePeople').val();
 
     let change = + parseFloat((parseFloat(newPeople) / parseFloat(peopleCalc)));
     peopleCalc = newPeople;
-
     $('#ingredientsTable tr').each(function () {
         $(this).find('#measurementCalc').each(function () {
             let currentMeasurement = parseFloat($(this).text());

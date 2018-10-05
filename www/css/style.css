@@ -1,3 +1,3 @@
-a[href], input[type='submit'], select, button, .pointer{
+a[href], input[type='submit'], select, button {
     cursor: pointer;
 }
