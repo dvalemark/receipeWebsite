@@ -1,10 +1,102 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Titel</title>
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <h1>Hej!</h1>
-  </body>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <script src="css/style.css"></script>
+  <title>Recipes Website</title>
+</head>
+
+<body>
+  <header>
+    <div class="jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Mums!</h1>
+        <p class="lead">Hitta dagens middag här!</p>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Mums</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Kategorier
+            </a>
+            <div id="kategorier" class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Huvudrätt</a>
+              <a class="dropdown-item" href="#">Förrätt</a>
+              <a class="dropdown-item" href="#">Efterrätt</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="/addRecipe.html">Admin</a>
+          </li>
+          <li id="searchForm">
+            <ul>
+              <input id="search-value" type="text" name="recipe-search">
+              <ul class="list-group" id="resultAc">
+
+              </ul>
+            </ul>
+          </li>
+          <li><button id="search-button">Sök</button> </li>
+
+        </ul>
+
+
+      </div>
+    </nav>
+  </header>
+  <section class="content-page">
+
+    <section id="searchResult">
+      <div class="row">
+        <div class="col-md-10">
+          <section id="search-result">Maten dyker upp här när du söker</section>
+        </div>
+        <div class="col-md-2" >
+          <section id="nutritionSection">
+            <p>Näringsvärden per portion</p>
+            <ul>
+                <li><p>Energi (kJ)</p><p id="sumEnergi">0</p></li>
+                <li><p>Salt (g)</p><p id="sumSalt">0</p></li>
+                <li><p>Kolesterol (mg)</p><p id="sumKolesterol">0</p></li>
+                <li><p>Kolhydrater (g)</p><p id="sumKolhydrat">0</p></li>
+                <li><p>Sackaros (g)</p><p id="sumSackaros">0</p></li>
+                <li><p>Monosackarider (g)</p><p id="sumMono">0</p></li>
+                <li><p>Disackarider (g)</p><p id="sumDi">0</p></li>
+                <li><p>Fett (g)</p><p id="sumFett">0</p></li>
+                <li><p>Mättade fettsyror (g)</p><p id="sumMattade">0</p></li>
+                <li><p>Fleromättade fettsyror (g)</p><p id="sumFlero">0</p></li>
+                <li><p>Enkelomättade fettsyror (g)</p><p id="sumEnkel">0</p></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+      </div>
+      </div>
+    </section>
+    <footer>
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="javaScript/search.js"></script>
+</body>
+
 </html>
