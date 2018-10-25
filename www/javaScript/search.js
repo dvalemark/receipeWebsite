@@ -194,7 +194,7 @@ function calculationNutrition(nutrition, ingredient) {
     displaySalt(salt.Varde, multiplyToGetNutrition);
 }
 
-function displaySalt(salt) {
+function displaySalt(salt, multiply) {
     prevSumSalt = $('#sumSalt').text();
 
     let sum1 = +((parseFloat(prevSumSalt) + ((parseFloat(salt)) * multiply)).toFixed(2));
