@@ -1,0 +1,42 @@
+#nutritionSection {
+    display: none;
+  }
+
+
+body{
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 10%;
+}
+
+#resultAc{
+  z-index: 1000;
+  position: relative;
+
+}
+
+#searchForm{
+  height: 30px;
+}
+
+#resultAcIndividual{
+  position: relative;
+}
+
+a[href], input[type='submit'], input[type='image'], label[for],li, select, button, .pointer {
+  cursor: pointer;
+}
+
+#ingredientAc{
+  z-index: 1000;
+  position: relative;
+}
+
+#ingredientsForm{
+  z-index: 1;
+  height: 100px;
+}
+
+#addIngredient{
+  height: 40px;
+}

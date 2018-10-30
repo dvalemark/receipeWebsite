@@ -36,7 +36,8 @@ module.exports = class Routes {
       '/ingredients/:ingredient',
       (req, res) => {
 
-        let ingredients = req.params.ingredient.toLowerCase();
+        let ingredients = req.params.ingredient.replace(/_/g, '%').toLowerCase();
+    
 
         let ingredientDb = require('../json/livsmedelsdata.json') || [];
 
@@ -116,7 +117,8 @@ module.exports = class Routes {
       async (req, res) => {
         var fs = require('fs');
         var addJson= req.body;
-        const jsonFile = 'C:/Users/disav/Documents/JavaScript/YummyTummy/receipeWebsite/json/recipe.json';
+        const jsonFile = './json/recipe.json';
+        
         
         fs.readFile(jsonFile, function (err, data) {
           var json = JSON.parse(data);
